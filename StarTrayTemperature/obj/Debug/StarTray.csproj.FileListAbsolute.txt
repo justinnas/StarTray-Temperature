@@ -1,0 +1,77 @@
+C:\Users\morfejus\Desktop\Personal projects\StarTray_CPU\StarTray_CPU\bin\Debug\StarTray.exe.config
+C:\Users\morfejus\Desktop\Personal projects\StarTray_CPU\StarTray_CPU\bin\Debug\StarTray.exe
+C:\Users\morfejus\Desktop\Personal projects\StarTray_CPU\StarTray_CPU\bin\Debug\StarTray.pdb
+C:\Users\morfejus\Desktop\Personal projects\StarTray_CPU\StarTray_CPU\bin\Debug\Microsoft.Win32.TaskScheduler.dll
+C:\Users\morfejus\Desktop\Personal projects\StarTray_CPU\StarTray_CPU\bin\Debug\OpenHardwareMonitorLib.dll
+C:\Users\morfejus\Desktop\Personal projects\StarTray_CPU\StarTray_CPU\bin\Debug\Microsoft.Win32.TaskScheduler.xml
+C:\Users\morfejus\Desktop\Personal projects\StarTray_CPU\StarTray_CPU\bin\Debug\de\Microsoft.Win32.TaskScheduler.resources.dll
+C:\Users\morfejus\Desktop\Personal projects\StarTray_CPU\StarTray_CPU\bin\Debug\es\Microsoft.Win32.TaskScheduler.resources.dll
+C:\Users\morfejus\Desktop\Personal projects\StarTray_CPU\StarTray_CPU\bin\Debug\fr\Microsoft.Win32.TaskScheduler.resources.dll
+C:\Users\morfejus\Desktop\Personal projects\StarTray_CPU\StarTray_CPU\bin\Debug\it\Microsoft.Win32.TaskScheduler.resources.dll
+C:\Users\morfejus\Desktop\Personal projects\StarTray_CPU\StarTray_CPU\bin\Debug\pl\Microsoft.Win32.TaskScheduler.resources.dll
+C:\Users\morfejus\Desktop\Personal projects\StarTray_CPU\StarTray_CPU\bin\Debug\ru\Microsoft.Win32.TaskScheduler.resources.dll
+C:\Users\morfejus\Desktop\Personal projects\StarTray_CPU\StarTray_CPU\bin\Debug\zh-CN\Microsoft.Win32.TaskScheduler.resources.dll
+C:\Users\morfejus\Desktop\Personal projects\StarTray_CPU\StarTray_CPU\bin\Debug\zh-Hant\Microsoft.Win32.TaskScheduler.resources.dll
+C:\Users\morfejus\Desktop\Personal projects\StarTray_CPU\StarTray_CPU\obj\Debug\StarTray.csproj.AssemblyReference.cache
+C:\Users\morfejus\Desktop\Personal projects\StarTray_CPU\StarTray_CPU\obj\Debug\StarTray.csproj.SuggestedBindingRedirects.cache
+C:\Users\morfejus\Desktop\Personal projects\StarTray_CPU\StarTray_CPU\obj\Debug\StarTray.Properties.Resources.resources
+C:\Users\morfejus\Desktop\Personal projects\StarTray_CPU\StarTray_CPU\obj\Debug\StarTray.csproj.GenerateResource.cache
+C:\Users\morfejus\Desktop\Personal projects\StarTray_CPU\StarTray_CPU\obj\Debug\StarTray.csproj.CoreCompileInputs.cache
+C:\Users\morfejus\Desktop\Personal projects\StarTray_CPU\StarTray_CPU\obj\Debug\StarTray.csproj.CopyComplete
+C:\Users\morfejus\Desktop\Personal projects\StarTray_CPU\StarTray_CPU\obj\Debug\StarTray.exe
+C:\Users\morfejus\Desktop\Personal projects\StarTray_CPU\StarTray_CPU\obj\Debug\StarTray.pdb
+C:\Users\morfejus\Desktop\Personal projects\StarTray v1.0\StarTray_CPU\bin\Debug\StarTray.exe.config
+C:\Users\morfejus\Desktop\Personal projects\StarTray v1.0\StarTray_CPU\bin\Debug\StarTray.exe
+C:\Users\morfejus\Desktop\Personal projects\StarTray v1.0\StarTray_CPU\bin\Debug\StarTray.pdb
+C:\Users\morfejus\Desktop\Personal projects\StarTray v1.0\StarTray_CPU\bin\Debug\HidSharp.dll
+C:\Users\morfejus\Desktop\Personal projects\StarTray v1.0\StarTray_CPU\bin\Debug\LibreHardwareMonitorLib.dll
+C:\Users\morfejus\Desktop\Personal projects\StarTray v1.0\StarTray_CPU\bin\Debug\Microsoft.Win32.TaskScheduler.dll
+C:\Users\morfejus\Desktop\Personal projects\StarTray v1.0\StarTray_CPU\bin\Debug\System.CodeDom.dll
+C:\Users\morfejus\Desktop\Personal projects\StarTray v1.0\StarTray_CPU\bin\Debug\HidSharp.pdb
+C:\Users\morfejus\Desktop\Personal projects\StarTray v1.0\StarTray_CPU\bin\Debug\HidSharp.xml
+C:\Users\morfejus\Desktop\Personal projects\StarTray v1.0\StarTray_CPU\bin\Debug\LibreHardwareMonitorLib.xml
+C:\Users\morfejus\Desktop\Personal projects\StarTray v1.0\StarTray_CPU\bin\Debug\Microsoft.Win32.TaskScheduler.xml
+C:\Users\morfejus\Desktop\Personal projects\StarTray v1.0\StarTray_CPU\bin\Debug\System.CodeDom.xml
+C:\Users\morfejus\Desktop\Personal projects\StarTray v1.0\StarTray_CPU\bin\Debug\de\Microsoft.Win32.TaskScheduler.resources.dll
+C:\Users\morfejus\Desktop\Personal projects\StarTray v1.0\StarTray_CPU\bin\Debug\es\Microsoft.Win32.TaskScheduler.resources.dll
+C:\Users\morfejus\Desktop\Personal projects\StarTray v1.0\StarTray_CPU\bin\Debug\fr\Microsoft.Win32.TaskScheduler.resources.dll
+C:\Users\morfejus\Desktop\Personal projects\StarTray v1.0\StarTray_CPU\bin\Debug\it\Microsoft.Win32.TaskScheduler.resources.dll
+C:\Users\morfejus\Desktop\Personal projects\StarTray v1.0\StarTray_CPU\bin\Debug\pl\Microsoft.Win32.TaskScheduler.resources.dll
+C:\Users\morfejus\Desktop\Personal projects\StarTray v1.0\StarTray_CPU\bin\Debug\ru\Microsoft.Win32.TaskScheduler.resources.dll
+C:\Users\morfejus\Desktop\Personal projects\StarTray v1.0\StarTray_CPU\bin\Debug\zh-CN\Microsoft.Win32.TaskScheduler.resources.dll
+C:\Users\morfejus\Desktop\Personal projects\StarTray v1.0\StarTray_CPU\bin\Debug\zh-Hant\Microsoft.Win32.TaskScheduler.resources.dll
+C:\Users\morfejus\Desktop\Personal projects\StarTray v1.0\StarTray_CPU\obj\Debug\StarTray.csproj.AssemblyReference.cache
+C:\Users\morfejus\Desktop\Personal projects\StarTray v1.0\StarTray_CPU\obj\Debug\StarTray.csproj.SuggestedBindingRedirects.cache
+C:\Users\morfejus\Desktop\Personal projects\StarTray v1.0\StarTray_CPU\obj\Debug\StarTray.Properties.Resources.resources
+C:\Users\morfejus\Desktop\Personal projects\StarTray v1.0\StarTray_CPU\obj\Debug\StarTray.csproj.GenerateResource.cache
+C:\Users\morfejus\Desktop\Personal projects\StarTray v1.0\StarTray_CPU\obj\Debug\StarTray.csproj.CoreCompileInputs.cache
+C:\Users\morfejus\Desktop\Personal projects\StarTray v1.0\StarTray_CPU\obj\Debug\StarTray.csproj.CopyComplete
+C:\Users\morfejus\Desktop\Personal projects\StarTray v1.0\StarTray_CPU\obj\Debug\StarTray.exe
+C:\Users\morfejus\Desktop\Personal projects\StarTray v1.0\StarTray_CPU\obj\Debug\StarTray.pdb
+C:\Users\mercury\Documents\Personal projects\startray-temp\StarTray_CPU\obj\Debug\StarTray.csproj.AssemblyReference.cache
+C:\Users\mercury\Documents\Personal projects\startray-temp\StarTray_CPU\obj\Debug\StarTray.Properties.Resources.resources
+C:\Users\mercury\Documents\Personal projects\startray-temp\StarTray_CPU\obj\Debug\StarTray.csproj.GenerateResource.cache
+C:\Users\mercury\Documents\Personal projects\startray-temp\StarTray_CPU\obj\Debug\StarTray.exe
+C:\Users\mercury\Documents\Personal projects\startray-temp\StarTray_CPU\obj\Debug\StarTray.pdb
+C:\Users\mercury\Documents\Personal projects\startray-temp\StarTray_CPU\bin\Debug\StarTray.exe.config
+C:\Users\mercury\Documents\Personal projects\startray-temp\StarTray_CPU\bin\Debug\StarTray.exe
+C:\Users\mercury\Documents\Personal projects\startray-temp\StarTray_CPU\bin\Debug\StarTray.pdb
+C:\Users\mercury\Documents\Personal projects\startray-temp\StarTray_CPU\bin\Debug\HidSharp.dll
+C:\Users\mercury\Documents\Personal projects\startray-temp\StarTray_CPU\bin\Debug\LibreHardwareMonitorLib.dll
+C:\Users\mercury\Documents\Personal projects\startray-temp\StarTray_CPU\bin\Debug\Microsoft.Win32.TaskScheduler.dll
+C:\Users\mercury\Documents\Personal projects\startray-temp\StarTray_CPU\bin\Debug\System.CodeDom.dll
+C:\Users\mercury\Documents\Personal projects\startray-temp\StarTray_CPU\bin\Debug\HidSharp.pdb
+C:\Users\mercury\Documents\Personal projects\startray-temp\StarTray_CPU\bin\Debug\HidSharp.xml
+C:\Users\mercury\Documents\Personal projects\startray-temp\StarTray_CPU\bin\Debug\LibreHardwareMonitorLib.xml
+C:\Users\mercury\Documents\Personal projects\startray-temp\StarTray_CPU\bin\Debug\Microsoft.Win32.TaskScheduler.xml
+C:\Users\mercury\Documents\Personal projects\startray-temp\StarTray_CPU\bin\Debug\System.CodeDom.xml
+C:\Users\mercury\Documents\Personal projects\startray-temp\StarTray_CPU\bin\Debug\de\Microsoft.Win32.TaskScheduler.resources.dll
+C:\Users\mercury\Documents\Personal projects\startray-temp\StarTray_CPU\bin\Debug\es\Microsoft.Win32.TaskScheduler.resources.dll
+C:\Users\mercury\Documents\Personal projects\startray-temp\StarTray_CPU\bin\Debug\fr\Microsoft.Win32.TaskScheduler.resources.dll
+C:\Users\mercury\Documents\Personal projects\startray-temp\StarTray_CPU\bin\Debug\it\Microsoft.Win32.TaskScheduler.resources.dll
+C:\Users\mercury\Documents\Personal projects\startray-temp\StarTray_CPU\bin\Debug\pl\Microsoft.Win32.TaskScheduler.resources.dll
+C:\Users\mercury\Documents\Personal projects\startray-temp\StarTray_CPU\bin\Debug\ru\Microsoft.Win32.TaskScheduler.resources.dll
+C:\Users\mercury\Documents\Personal projects\startray-temp\StarTray_CPU\bin\Debug\zh-CN\Microsoft.Win32.TaskScheduler.resources.dll
+C:\Users\mercury\Documents\Personal projects\startray-temp\StarTray_CPU\bin\Debug\zh-Hant\Microsoft.Win32.TaskScheduler.resources.dll
+C:\Users\mercury\Documents\Personal projects\startray-temp\StarTray_CPU\obj\Debug\StarTray.csproj.CoreCompileInputs.cache
+C:\Users\mercury\Documents\Personal projects\startray-temp\StarTray_CPU\obj\Debug\StarTray.csproj.Up2Date
