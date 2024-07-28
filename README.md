@@ -1,6 +1,7 @@
 <div align="center">
-  <img src="https://github.com/user-attachments/assets/9e39025f-991e-4c99-bd1f-3353982527d0" alt="Logo" height="200">
+  <img src="https://github.com/user-attachments/assets/f4c5cc7c-938f-4ce5-b85d-1781002567bb" alt="StarTray" height="200">
 </div>
+
 
 ## StarTray
 
@@ -13,12 +14,15 @@
 <br>
 
 ## Screenshots
-![1](https://github.com/user-attachments/assets/76065f81-ba0a-40bd-9435-693942228ac4)
-![2](https://github.com/user-attachments/assets/11d6266f-b3bb-4dfd-aaf0-54aa7db3aee8)
-![3](https://github.com/user-attachments/assets/1a3a37aa-e4d4-4dee-9056-d82b64b0bb69)
-![4](https://github.com/user-attachments/assets/4e827dc7-9aee-46bd-a0a4-7f14a4d8011b)
-![5](https://github.com/user-attachments/assets/b2935b69-e9e1-41c4-99c4-7793dcb18788)
-![6](https://github.com/user-attachments/assets/0bfddd1c-c068-4d33-982f-97c528865943)
+Icons can be customized through the themes menu.
+<div align="center" display="flex">
+<img src="https://github.com/user-attachments/assets/76065f81-ba0a-40bd-9435-693942228ac4" height="100">
+<img src="https://github.com/user-attachments/assets/11d6266f-b3bb-4dfd-aaf0-54aa7db3aee8" height="100">
+<img src="https://github.com/user-attachments/assets/1a3a37aa-e4d4-4dee-9056-d82b64b0bb69" height="100">
+<img src="https://github.com/user-attachments/assets/4e827dc7-9aee-46bd-a0a4-7f14a4d8011b" height="100">
+<img src="https://github.com/user-attachments/assets/b2935b69-e9e1-41c4-99c4-7793dcb18788" height="100">
+<img src="https://github.com/user-attachments/assets/0bfddd1c-c068-4d33-982f-97c528865943" height="100">
+</div>
 
 <br>
 
