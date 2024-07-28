@@ -14,8 +14,8 @@
 <br>
 
 ## Screenshots
-Icons can be customized through the themes menu.
-<div align="center" display="flex">
+***Icons can be customized through the themes menu.***
+<div display="flex">
 <img src="https://github.com/user-attachments/assets/76065f81-ba0a-40bd-9435-693942228ac4" height="100">
 <img src="https://github.com/user-attachments/assets/11d6266f-b3bb-4dfd-aaf0-54aa7db3aee8" height="100">
 <img src="https://github.com/user-attachments/assets/1a3a37aa-e4d4-4dee-9056-d82b64b0bb69" height="100">
