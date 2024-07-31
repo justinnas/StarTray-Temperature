@@ -64,6 +64,11 @@ This application is very simple to use. After launching the application, you wil
 
 ## License
 
-This project uses these external libraries: LibreHardwareMonitorLib, HidSharp, System.CodeDom, System.Management, TaskScheduler. Their respective license files can be found [here](https://github.com/justinnas/StarTray-Temperature/tree/main/Licenses).
+This project uses the following libraries: LibreHardwareMonitorLib (MPL 2.0 License), HidSharp (Apache License), 
+System.CodeDom (MIT License), System.Management (MIT License), TaskScheduler (MIT License).
 
-StarTray is licensed under GNU General Public License v3.0 license, please see the [license file](https://github.com/justinnas/StarTray-Temperature/blob/main/LICENSE) for more details.
+This project uses the Open Sans font, designed by Steve Matteson, licensed underSIL Open Font License, Version 1.1.
+
+Their respective license files can be found [here](https://github.com/justinnas/StarTray-Temperature/tree/main/Licenses).
+
+StarTray is licensed under GNU General Public License v3.0 license, please see the [license file](https://github.com/justinnas/StarTray-Temperature/blob/main/LICENSE.txt) for more details.
