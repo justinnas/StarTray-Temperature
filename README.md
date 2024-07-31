@@ -5,7 +5,7 @@
 
 ## StarTray
 
-**StarTray** - a super lightweight, aesthetic, and easy-to-use open-source application for monitoring your computer’s processor’s and graphics card’s temperatures from the system tray.
+**StarTray** - super lightweight, aesthetic, and easy-to-use open-source application for monitoring your computer’s processor’s and graphics card’s temperatures from the system tray.
 
 **Supports**: Windows 10 and Windows 11.
 
