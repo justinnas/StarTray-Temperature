@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="https://github.com/user-attachments/assets/f4c5cc7c-938f-4ce5-b85d-1781002567bb" alt="StarTray" height="200">
+  <img src="https://github.com/user-attachments/assets/65abf490-58d8-42d7-acb4-bd4e593dbdf7" alt="StarTray" height="200">
 </div>
 
 
@@ -58,7 +58,7 @@ This application is very simple to use. After launching the application, you wil
 **Exit**
 
 - **Close the Application:**
-    - Click the "Exit" button to close MyApp.
+    - Click the "Exit" button to close StarTray.
 
 <br>
 
@@ -67,7 +67,7 @@ This application is very simple to use. After launching the application, you wil
 This project uses the following libraries: LibreHardwareMonitorLib (MPL 2.0 License), HidSharp (Apache License), 
 System.CodeDom (MIT License), System.Management (MIT License), TaskScheduler (MIT License).
 
-This project uses the Open Sans font, designed by Steve Matteson, licensed underSIL Open Font License, Version 1.1.
+This project uses the Open Sans font, designed by Steve Matteson, licensed under SIL Open Font License, Version 1.1.
 
 Their respective license files can be found [here](https://github.com/justinnas/StarTray-Temperature/tree/main/Licenses).
 
