@@ -7,9 +7,19 @@
 
 **StarTray** - super lightweight, aesthetic, and easy-to-use open-source application for monitoring your computer’s processor’s and graphics card’s temperatures from the system tray.
 
-**Supports**: Windows 10 and Windows 11.
+**Supports**: Windows 10 and Windows 11 64-bit (x64) operating systems.
 
 **Developed and designed by** [@justinnas](https://github.com/justinnas)
+
+<br>
+
+## Download
+
+You can download the latest version of StarTray from [GitHub Releases](https://github.com/justinnas/StarTray-Temperature/releases). Scroll down to 'Assets' section and choose between the installer or the portable version based on your preference.
+
+<br>
+
+***Disclaimer:** This appliaction requires administrative privileges in order to read hardware temperature data. Since this application is new, it might trigger some antivirus systems. If you prefer, you can review the source code and compile the application yourself.*
 
 <br>
 
@@ -28,17 +38,19 @@
 
 ## Usage
 
-This application is very simple to use. After launching the application, you will see CPU and/or GPU icons in the system tray. You can right-click one of these icons to open the menu panel.
+This application is very simple to use. After launching the application, you will see CPU and/or GPU icons in the system tray. 
+You can right-click one of these icons to open the menu panel. 
+Right-clicking GPU icon brings up GPU icon menu, right-clicking CPU icon brings up CPU icon menu.
 
 ### Menu Panel
 
-**Theme**
+**Theme** *(Specific to an icon)*
 
 - **Change Icon Theme:**
     - Hover over the "Theme" tab.
     - Select either "CPU theme" or "GPU theme" and click on the desired theme to change the icon's appearance.
 
-**Options**
+**Options** *(Global, applies to both icons)*
 
 - **Show/Hide Icons:**
     - Hover over the "Options" tab.
@@ -50,12 +62,12 @@ This application is very simple to use. After launching the application, you wil
     - Hover over the "Options" tab.
     - Choose "Change to Fahrenheit" or "Change to Celsius" to switch between temperature units.
 
-**Info**
+**Info** *(Specific to an icon)*
 
 - **View Hardware Info:**
     - Hover over the "Info" tab to display your processor's or graphics card's name.
 
-**Exit**
+**Exit** *(Global, applies to both icons)*
 
 - **Close the Application:**
     - Click the "Exit" button to close StarTray.
