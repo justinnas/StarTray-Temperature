@@ -74,6 +74,12 @@ Right-clicking GPU icon brings up GPU icon menu, right-clicking CPU icon brings 
 
 <br>
 
+## Source Code
+
+If you prefer, you can review the source code and compile the application yourself. After compiling the application, copy the 'Resources' and 'Licenses' folders and their contents to the same directory as the compiled .exe file.
+
+<br>
+
 ## License
 
 This project uses the following libraries: LibreHardwareMonitorLib (MPL 2.0 License), HidSharp (Apache License), 
