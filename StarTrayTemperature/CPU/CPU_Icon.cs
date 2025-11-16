@@ -88,6 +88,11 @@ namespace StarTrayTemperature
                             sensorID_CPU = j;
                             return;
                         }
+                        //if (sensor != null && sensor.SensorType == SensorType.Load)
+                        //{
+                        //    sensorID_CPU = j;
+                        //    return;
+                        //}
                     }
                 }
             }
