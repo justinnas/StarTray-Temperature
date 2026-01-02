@@ -13,6 +13,16 @@
 
 <br>
 
+## 📌 Important
+
+StarTray relies on the [LibreHardwareMonitorLib](https://github.com/LibreHardwareMonitor/LibreHardwareMonitor), which uses WinRing0, to collect temperature data. Due to recent changes in Microsoft Defender, the WinRing0 driver (identified as **StarTray.sys** when used by StarTray) is now **flagged as vulnerable**. This change impacts many applications that depend on WinRing0. Please [read the official Microsoft's blog post before proceeding](https://support.microsoft.com/en-us/windows/microsoft-defender-antivirus-alert-vulnerabledriver-winnt-winring0-eb057830-d77b-41a2-9a34-015a5d203c42).
+
+Currently, there are no official releases of LibreHardwareMonitorLib that do not use WinRing0. Prerelease versions have switched to the PawnIO driver, and once a stable release is available, I will update StarTray accordingly.
+
+In the meantime, you can either follow the guidance provided in [Microsoft's blog post](https://support.microsoft.com/en-us/windows/microsoft-defender-antivirus-alert-vulnerabledriver-winnt-winring0-eb057830-d77b-41a2-9a34-015a5d203c42) or temporarily stop using StarTray if you are uncomfortable with the use of the WinRing0 driver. I apologize for the inconvenience.
+
+<br>
+
 ## Download
 
 You can download the latest version of StarTray from [GitHub Releases](https://github.com/justinnas/StarTray-Temperature/releases). Scroll down to 'Assets' section and choose between the installer or the portable version based on your preference.
@@ -90,3 +100,4 @@ This project uses the Open Sans font, designed by Steve Matteson, licensed under
 Their respective license files can be found [here](https://github.com/justinnas/StarTray-Temperature/tree/main/Licenses).
 
 StarTray is licensed under GNU General Public License v3.0 license, please see the [license file](https://github.com/justinnas/StarTray-Temperature/blob/main/LICENSE.txt) for more details.
+
