@@ -1,5 +1,4 @@
 ﻿using Microsoft.Win32;
-using LibreHardwareMonitor.Hardware;
 using System;
 using System.Drawing;
 using System.Drawing.Drawing2D;
@@ -11,25 +10,29 @@ using System.Runtime.InteropServices;
 using System.Windows.Forms;
 using Microsoft.Win32.TaskScheduler;
 using System.Collections.Generic;
+using LibreHardwareMonitor.Hardware;
+using System.Diagnostics;
 
 namespace StarTrayTemperature
 {
     public partial class IconTray : Form
     {
-        private string AppLabel = "StarTray";
-        private string VersionLabel = "v1.1";
-        private string CopyrightLabel = "© justinnas";
+        internal string AppLabel = "StarTray";
+        internal string VersionLabel = "v1.2";
+        internal string CopyrightLabel = "© justinnas";
 
 
         private string resourcesFolder = Path.Combine(Application.StartupPath, "Resources");
 
         // --==+
 
-        private Computer computer;
+        internal Computer computer;
 
         // -+
 
-        private bool useFahrenheit = false;
+        internal bool useFahrenheit = false;
+        internal bool showCPU = true;
+        internal bool showGPU = true;
 
         // +=-
 
@@ -38,15 +41,17 @@ namespace StarTrayTemperature
 
         // --==+
 
-        private int iconWidth = 32;
-        private int iconHeight = 32;
-        private FontFamily customFontFamily = FontFamily.GenericSansSerif;
+        internal int iconWidth = 32;
+        internal int iconHeight = 32;
+        internal FontFamily customFontFamily = FontFamily.GenericSansSerif;
 
 
         public IconTray()
         {
             InitializeComponent();
             LoadGlobalSettings();
+
+            PawnIOManager.CheckAndInstallPawnIO();
 
             computer = new Computer {
                 IsCpuEnabled = true,
@@ -63,18 +68,18 @@ namespace StarTrayTemperature
             // Initialize the icons
             if (showCPU)
             {
-                StartCPU();
+                StartSensor("CPU");
             }
 
             if (showGPU)
             {
-                StartGPU();
+                StartSensor("GPU");
             }
 
             // Start CPU icon if both of the icons are somehow turned off
             else if (!showCPU && !showGPU)
             {
-                StartCPU();
+                StartSensor("CPU");
             }
 
             Application.Run();

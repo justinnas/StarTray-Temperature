@@ -1,0 +1,1074 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>DiskInfoToolkit</name>
+    </assembly>
+    <members>
+        <member name="T:DiskInfoToolkit.DiskPartitionStyle">
+            <summary>
+            Defines disk partition style values.
+            </summary>
+        </member>
+        <member name="T:DiskInfoToolkit.ILocalizedTextProvider">
+            <summary>
+            Defines a contract for providing localized or context-specific text based on a key.
+            </summary>
+        </member>
+        <member name="T:DiskInfoToolkit.ProbeStrategy">
+            <summary>
+            Defines probe strategy values.
+            </summary>
+        </member>
+        <member name="T:DiskInfoToolkit.ResourceManagerLocalizedTextProvider">
+            <summary>
+            Represents the resource manager localized text provider.
+            </summary>
+        </member>
+        <member name="M:DiskInfoToolkit.ResourceManagerLocalizedTextProvider.#ctor(System.Resources.ResourceManager)">
+            <summary>
+            Initializes a new instance of the <see cref="T:DiskInfoToolkit.ResourceManagerLocalizedTextProvider"/> class.
+            </summary>
+            <param name="resourceManager">The resource manager which provides localized strings.</param>
+        </member>
+        <member name="M:DiskInfoToolkit.ResourceManagerLocalizedTextProvider.#ctor(System.Resources.ResourceManager,System.Globalization.CultureInfo)">
+            <summary>
+            Initializes a new instance of the <see cref="T:DiskInfoToolkit.ResourceManagerLocalizedTextProvider"/> class.
+            </summary>
+            <param name="resourceManager">The resource manager which provides localized strings.</param>
+            <param name="culture">The culture for which to retrieve the localized strings.</param>
+        </member>
+        <member name="M:DiskInfoToolkit.ResourceManagerLocalizedTextProvider.GetText(System.String)">
+            <summary>
+            Gets the text.
+            </summary>
+            <param name="textKey">The text key.</param>
+            <returns>The get text.</returns>
+        </member>
+        <member name="T:DiskInfoToolkit.SmartAttributeEntry">
+            <summary>
+            Represents a SMART attribute entry.
+            </summary>
+        </member>
+        <member name="M:DiskInfoToolkit.SmartAttributeEntry.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:DiskInfoToolkit.SmartAttributeEntry"/> class.
+            </summary>
+        </member>
+        <member name="P:DiskInfoToolkit.SmartAttributeEntry.ID">
+            <summary>
+            Gets or sets the id.
+            </summary>
+        </member>
+        <member name="P:DiskInfoToolkit.SmartAttributeEntry.StatusFlags">
+            <summary>
+            Gets or sets the status flags.
+            </summary>
+        </member>
+        <member name="P:DiskInfoToolkit.SmartAttributeEntry.CurrentValue">
+            <summary>
+            Gets or sets the current value.
+            </summary>
+        </member>
+        <member name="P:DiskInfoToolkit.SmartAttributeEntry.WorstValue">
+            <summary>
+            Gets or sets the worst value.
+            </summary>
+        </member>
+        <member name="P:DiskInfoToolkit.SmartAttributeEntry.RawValue">
+            <summary>
+            Gets or sets the raw value.
+            </summary>
+        </member>
+        <member name="P:DiskInfoToolkit.SmartAttributeEntry.ThresholdValue">
+            <summary>
+            Gets or sets the threshold value.
+            </summary>
+        </member>
+        <member name="P:DiskInfoToolkit.SmartAttributeEntry.AttributeKey">
+            <summary>
+            Gets or sets the attribute key.
+            </summary>
+        </member>
+        <member name="P:DiskInfoToolkit.SmartAttributeEntry.Name">
+            <summary>
+            Gets or sets the name.
+            </summary>
+        </member>
+        <member name="P:DiskInfoToolkit.SmartAttributeEntry.TextKey">
+            <summary>
+            Gets the resource text key for the attribute name.
+            </summary>
+        </member>
+        <member name="M:DiskInfoToolkit.SmartAttributeEntry.GetDisplayName">
+            <summary>
+            Gets the display name.
+            </summary>
+            <returns>The get display name.</returns>
+        </member>
+        <member name="T:DiskInfoToolkit.SmartAttributeProfile">
+            <summary>
+            Defines smart attribute profile values.
+            </summary>
+        </member>
+        <member name="T:DiskInfoToolkit.Storage">
+            <summary>
+            This class provides static methods for storage device enumeration, monitoring and management.
+            </summary>
+        </member>
+        <member name="E:DiskInfoToolkit.Storage.DevicesChanged">
+            <summary>
+            Occurs when the set of available storage devices changes.
+            </summary>
+            <remarks>Subscribe to this event to be notified when storage devices are added or removed.<br/>
+            The event provides information about the change through the <see cref="T:DiskInfoToolkit.StorageDevicesChangedEventArgs"/> parameter.</remarks>
+        </member>
+        <member name="P:DiskInfoToolkit.Storage.MediaWatchLoopDelay">
+            <summary>
+            Gets or sets the delay between removable-media polling cycles.<br/>
+            Default is 1 second.
+            </summary>
+            <remarks>Setting a very low value may increase CPU usage, while setting a very high value may cause slower reaction to media changes.</remarks>
+        </member>
+        <member name="P:DiskInfoToolkit.Storage.ResourceCulture">
+            <summary>
+            Gets or sets the culture used to localize assembly resources.
+            </summary>
+        </member>
+        <member name="P:DiskInfoToolkit.Storage.CurrentDisks">
+            <summary>
+            Gets a snapshot of the currently cached storage devices.
+            </summary>
+        </member>
+        <member name="M:DiskInfoToolkit.Storage.GetDisks">
+            <summary>
+            Gets the list of currently visible storage devices.
+            </summary>
+            <returns>A list of <see cref="T:DiskInfoToolkit.StorageDevice"/> objects representing the currently visible storage devices.</returns>
+        </member>
+        <member name="M:DiskInfoToolkit.Storage.Refresh(DiskInfoToolkit.StorageDevice)">
+            <summary>
+            Refreshes the current state of the specified storage device.
+            </summary>
+            <param name="device">The device to refresh.</param>
+            <returns>Whether the device state was successfully refreshed or device had no changes.</returns>
+        </member>
+        <member name="M:DiskInfoToolkit.Storage.RefreshVolatileData(DiskInfoToolkit.StorageDevice)">
+            <summary>
+            Refreshes the volatile data of the specified storage device.
+            </summary>
+            <param name="device">The device to refresh.</param>
+            <returns>Whether the volatile data was successfully refreshed or device had no changes.</returns>
+        </member>
+        <member name="M:DiskInfoToolkit.Storage.RefreshPartitions(DiskInfoToolkit.StorageDevice)">
+            <summary>
+            Refreshes the partitions of the specified storage device.
+            </summary>
+            <param name="device">The device to refresh.</param>
+            <returns>Whether the partitions were successfully refreshed or device had no changes.</returns>
+        </member>
+        <member name="M:DiskInfoToolkit.Storage.Refresh(DiskInfoToolkit.StorageDevice,System.Boolean,System.Boolean)">
+            <summary>
+            Refreshes the current state of the specified storage device.
+            </summary>
+            <param name="device">The device to refresh.</param>
+            <param name="refreshProbeData">Whether to refresh the probe data.</param>
+            <param name="refreshPartitions">Whether to refresh the partitions.</param>
+            <returns>Whether the device state was successfully refreshed or device had no changes.</returns>
+        </member>
+        <member name="M:DiskInfoToolkit.Storage.StartMonitoring">
+            <summary>
+            Starts monitoring storage devices for changes.
+            </summary>
+        </member>
+        <member name="M:DiskInfoToolkit.Storage.StopMonitoring">
+            <summary>
+            Stops explicit storage device monitoring when no event subscribers are registered.
+            </summary>
+        </member>
+        <member name="M:DiskInfoToolkit.Storage.RefreshCachedDisks">
+            <summary>
+            Refreshes the cached disks.
+            </summary>
+        </member>
+        <member name="M:DiskInfoToolkit.Storage.TryWakeUp(DiskInfoToolkit.StorageDevice)">
+            <summary>
+            Attempts to wake up the specified device if it is currently powered off.
+            </summary>
+            <param name="device">The storage device to wake up. Must not be null.</param>
+        </member>
+        <member name="T:DiskInfoToolkit.StorageBusType">
+            <summary>
+            Defines storage bus type values.
+            </summary>
+        </member>
+        <member name="T:DiskInfoToolkit.StorageChangeKind">
+            <summary>
+            Defines storage change kind values.
+            </summary>
+        </member>
+        <member name="T:DiskInfoToolkit.StorageControllerFamily">
+            <summary>
+            Defines storage controller family values.
+            </summary>
+        </member>
+        <member name="T:DiskInfoToolkit.StorageControllerInfo">
+            <summary>
+            Represents the storage controller info.
+            </summary>
+        </member>
+        <member name="M:DiskInfoToolkit.StorageControllerInfo.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:DiskInfoToolkit.StorageControllerInfo"/> class.
+            </summary>
+        </member>
+        <member name="P:DiskInfoToolkit.StorageControllerInfo.Name">
+            <summary>
+            Gets or sets the name.
+            </summary>
+        </member>
+        <member name="P:DiskInfoToolkit.StorageControllerInfo.Service">
+            <summary>
+            Gets or sets the service.
+            </summary>
+        </member>
+        <member name="P:DiskInfoToolkit.StorageControllerInfo.Class">
+            <summary>
+            Gets or sets the class.
+            </summary>
+        </member>
+        <member name="P:DiskInfoToolkit.StorageControllerInfo.Kind">
+            <summary>
+            Gets or sets the kind.
+            </summary>
+        </member>
+        <member name="P:DiskInfoToolkit.StorageControllerInfo.Identifier">
+            <summary>
+            Gets or sets the identifier.
+            </summary>
+        </member>
+        <member name="P:DiskInfoToolkit.StorageControllerInfo.Family">
+            <summary>
+            Gets or sets the family.
+            </summary>
+        </member>
+        <member name="P:DiskInfoToolkit.StorageControllerInfo.VendorName">
+            <summary>
+            Gets or sets the resolved controller vendor name.
+            </summary>
+        </member>
+        <member name="P:DiskInfoToolkit.StorageControllerInfo.DeviceName">
+            <summary>
+            Gets or sets the resolved controller device or product name.
+            </summary>
+        </member>
+        <member name="P:DiskInfoToolkit.StorageControllerInfo.HardwareID">
+            <summary>
+            Gets or sets the hardware id.
+            </summary>
+        </member>
+        <member name="P:DiskInfoToolkit.StorageControllerInfo.VendorID">
+            <summary>
+            Gets or sets the vendor id.
+            </summary>
+        </member>
+        <member name="P:DiskInfoToolkit.StorageControllerInfo.DeviceID">
+            <summary>
+            Gets or sets the device id.
+            </summary>
+        </member>
+        <member name="P:DiskInfoToolkit.StorageControllerInfo.Revision">
+            <summary>
+            Gets or sets the revision.
+            </summary>
+        </member>
+        <member name="P:DiskInfoToolkit.StorageControllerInfo.IsUsbStyleHardwareID">
+            <summary>
+            Gets or sets a value indicating whether usb style hardware id.
+            </summary>
+        </member>
+        <member name="T:DiskInfoToolkit.StorageCsmiInfo">
+            <summary>
+            Represents storage csmi info.
+            </summary>
+        </member>
+        <member name="M:DiskInfoToolkit.StorageCsmiInfo.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:DiskInfoToolkit.StorageCsmiInfo"/> class.
+            </summary>
+        </member>
+        <member name="P:DiskInfoToolkit.StorageCsmiInfo.PhyCount">
+            <summary>
+            Gets or sets the phy count.
+            </summary>
+        </member>
+        <member name="P:DiskInfoToolkit.StorageCsmiInfo.PortIdentifier">
+            <summary>
+            Gets or sets the port identifier.
+            </summary>
+        </member>
+        <member name="P:DiskInfoToolkit.StorageCsmiInfo.AttachedPhyIdentifier">
+            <summary>
+            Gets or sets the attached phy identifier.
+            </summary>
+        </member>
+        <member name="P:DiskInfoToolkit.StorageCsmiInfo.NegotiatedLinkRate">
+            <summary>
+            Gets or sets the negotiated link rate.
+            </summary>
+        </member>
+        <member name="P:DiskInfoToolkit.StorageCsmiInfo.NegotiatedLinkRateName">
+            <summary>
+            Gets or sets the negotiated link rate name.
+            </summary>
+        </member>
+        <member name="P:DiskInfoToolkit.StorageCsmiInfo.AttachedSasAddress">
+            <summary>
+            Gets or sets the attached sas address.
+            </summary>
+        </member>
+        <member name="P:DiskInfoToolkit.StorageCsmiInfo.TargetProtocol">
+            <summary>
+            Gets or sets the target protocol.
+            </summary>
+        </member>
+        <member name="T:DiskInfoToolkit.StorageDevice">
+            <summary>
+            Represents a storage device.
+            </summary>
+        </member>
+        <member name="M:DiskInfoToolkit.StorageDevice.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:DiskInfoToolkit.StorageDevice"/> class.
+            </summary>
+        </member>
+        <member name="P:DiskInfoToolkit.StorageDevice.DevicePath">
+            <summary>
+            Device path is the primary unique identifier for a storage device and is used for all direct interactions with the device.
+            </summary>
+        </member>
+        <member name="P:DiskInfoToolkit.StorageDevice.AlternateDevicePath">
+            <summary>
+            Alternate device path is an additional unique identifier for a storage device that may be used for direct interactions with the device, but is not guaranteed to be present on all devices.
+            </summary>
+        </member>
+        <member name="P:DiskInfoToolkit.StorageDevice.DeviceInstanceID">
+            <summary>
+            Device instance ID is the unique identifier assigned to a device by the Windows Plug and Play manager.<br/>
+            It is used for correlating with other sources of device information such as WMI or SetupAPI, but is not used for direct interactions with the device.
+            </summary>
+        </member>
+        <member name="P:DiskInfoToolkit.StorageDevice.ParentInstanceID">
+            <summary>
+            Parent instance ID is the device instance ID of the parent device as assigned by the Windows Plug and Play manager, or null if there is no parent device.
+            </summary>
+        </member>
+        <member name="P:DiskInfoToolkit.StorageDevice.DisplayName">
+            <summary>
+            Display name is a user-friendly name for the device that may be constructed from various properties of the device.<br/>
+            Usually it is the model name of the drive.
+            </summary>
+        </member>
+        <member name="P:DiskInfoToolkit.StorageDevice.DeviceDescription">
+            <summary>
+            Device description is fetched via SetupAPIs device description property.
+            </summary>
+        </member>
+        <member name="P:DiskInfoToolkit.StorageDevice.DeviceTypeLabel">
+            <summary>
+            Device type label is a user-friendly label describing the type of the device, such as "Disk drive" or "NVMe drive".<br/>
+            </summary>
+        </member>
+        <member name="P:DiskInfoToolkit.StorageDevice.Controller">
+            <summary>
+            Gets or sets information about the associated storage controller.
+            </summary>
+        </member>
+        <member name="P:DiskInfoToolkit.StorageDevice.VendorName">
+            <summary>
+            Gets or sets the vendor name.
+            </summary>
+        </member>
+        <member name="P:DiskInfoToolkit.StorageDevice.ProductName">
+            <summary>
+            Gets or sets the product name.
+            </summary>
+        </member>
+        <member name="P:DiskInfoToolkit.StorageDevice.ProductRevision">
+            <summary>
+            Gets or sets the product revision.
+            </summary>
+        </member>
+        <member name="P:DiskInfoToolkit.StorageDevice.SerialNumber">
+            <summary>
+            Gets or sets the serial number.
+            </summary>
+        </member>
+        <member name="P:DiskInfoToolkit.StorageDevice.SdProtocolName">
+            <summary>
+            Gets or sets the sd protocol name.
+            </summary>
+        </member>
+        <member name="P:DiskInfoToolkit.StorageDevice.TransportKind">
+            <summary>
+            Gets or sets the transport kind.
+            </summary>
+        </member>
+        <member name="P:DiskInfoToolkit.StorageDevice.ProbeStrategy">
+            <summary>
+            Gets or sets the probe strategy.
+            </summary>
+        </member>
+        <member name="P:DiskInfoToolkit.StorageDevice.BusType">
+            <summary>
+            Gets or sets the bus type.
+            </summary>
+        </member>
+        <member name="P:DiskInfoToolkit.StorageDevice.SdProtocolType">
+            <summary>
+            Gets or sets the sd protocol type.
+            </summary>
+        </member>
+        <member name="P:DiskInfoToolkit.StorageDevice.IsRemovable">
+            <summary>
+            Gets or sets a value indicating whether disk is removable.
+            </summary>
+        </member>
+        <member name="P:DiskInfoToolkit.StorageDevice.IsDevicePowerOn">
+            <summary>
+            Gets or sets a value indicating whether the device is currently powered on.
+            </summary>
+        </member>
+        <member name="P:DiskInfoToolkit.StorageDevice.IsFiltered">
+            <summary>
+            Gets or sets a value indicating whether disk is filtered.
+            </summary>
+        </member>
+        <member name="P:DiskInfoToolkit.StorageDevice.SupportsSmart">
+            <summary>
+            Gets or sets a value indicating whether disk supports SMART.
+            </summary>
+        </member>
+        <member name="P:DiskInfoToolkit.StorageDevice.FilterReason">
+            <summary>
+            Filter reason is a user-friendly explanation of why a disk was filtered.<br/>
+            </summary>
+        </member>
+        <member name="P:DiskInfoToolkit.StorageDevice.Scsi">
+            <summary>
+            Gets or sets the SCSI information associated with the device.
+            </summary>
+        </member>
+        <member name="P:DiskInfoToolkit.StorageDevice.SmartVersionRaw">
+            <summary>
+            Gets or sets the smart version raw.
+            </summary>
+        </member>
+        <member name="P:DiskInfoToolkit.StorageDevice.Usb">
+            <summary>
+            Gets or sets the USB storage information associated with the device.
+            </summary>
+        </member>
+        <member name="P:DiskInfoToolkit.StorageDevice.StorageDeviceNumber">
+            <summary>
+            Gets or sets the storage device number.
+            </summary>
+        </member>
+        <member name="P:DiskInfoToolkit.StorageDevice.DiskSizeBytes">
+            <summary>
+            Gets or sets the disk size in bytes.
+            </summary>
+        </member>
+        <member name="P:DiskInfoToolkit.StorageDevice.CapacitySource">
+            <summary>
+            Gets or sets the capacity source.
+            </summary>
+        </member>
+        <member name="P:DiskInfoToolkit.StorageDevice.PredictsFailure">
+            <summary>
+            Gets or sets a value indicating whether the disk predicts failure.
+            </summary>
+        </member>
+        <member name="P:DiskInfoToolkit.StorageDevice.PredictFailureVendorData">
+            <summary>
+            Gets or sets the predict failure vendor data.
+            </summary>
+        </member>
+        <member name="P:DiskInfoToolkit.StorageDevice.SmartAttributes">
+            <summary>
+            Gets or sets the SMART attributes.
+            </summary>
+            <remarks>You can use <see cref="P:DiskInfoToolkit.Storage.ResourceCulture"/> to set the culture for localized attribute names.</remarks>
+        </member>
+        <member name="P:DiskInfoToolkit.StorageDevice.SmartAttributeProfile">
+            <summary>
+            Gets or sets the SMART attribute profile.
+            </summary>
+        </member>
+        <member name="P:DiskInfoToolkit.StorageDevice.ProbeTrace">
+            <summary>
+            Probe trace is a list of user-friendly descriptions of the probes that were performed to retrieve information about the disk.<br/>
+            They can be useful for debugging and understanding how information about the disk was obtained.
+            </summary>
+        </member>
+        <member name="P:DiskInfoToolkit.StorageDevice.ProbePlan">
+            <summary>
+            Gets or sets the cached probe plan containing the probe operations that succeeded during the initial full probe.
+            </summary>
+        </member>
+        <member name="P:DiskInfoToolkit.StorageDevice.Nvme">
+            <summary>
+            Gets or sets the NVMe information associated with the device.
+            </summary>
+        </member>
+        <member name="P:DiskInfoToolkit.StorageDevice.Temperature">
+            <summary>
+            Gets the normalized drive temperature in degrees Celsius when available.
+            </summary>
+        </member>
+        <member name="P:DiskInfoToolkit.StorageDevice.Health">
+            <summary>
+            Gets the drive health or percentage used value when available.
+            </summary>
+        </member>
+        <member name="P:DiskInfoToolkit.StorageDevice.HealthStatus">
+            <summary>
+            Gets the summarized SMART health status when available.
+            </summary>
+        </member>
+        <member name="P:DiskInfoToolkit.StorageDevice.HealthStatusReason">
+            <summary>
+            Gets the localized reason text for the summarized SMART health status when available.
+            </summary>
+            <remarks>This <see cref="T:System.String"/> can be multiple lines long and contains more detailed information about the health status.<br/>
+            You can use <see cref="P:DiskInfoToolkit.Storage.ResourceCulture"/> to set the culture for localization.</remarks>
+        </member>
+        <member name="P:DiskInfoToolkit.StorageDevice.HostReads">
+            <summary>
+            Gets the total host reads value when available.
+            </summary>
+        </member>
+        <member name="P:DiskInfoToolkit.StorageDevice.HostWrites">
+            <summary>
+            Gets the total host writes value when available.
+            </summary>
+        </member>
+        <member name="P:DiskInfoToolkit.StorageDevice.NandWrites">
+            <summary>
+            Gets the total NAND writes in gigabytes when available.
+            </summary>
+        </member>
+        <member name="P:DiskInfoToolkit.StorageDevice.GBytesErased">
+            <summary>
+            Gets the total gigabytes erased when available.
+            </summary>
+        </member>
+        <member name="P:DiskInfoToolkit.StorageDevice.WearLevelingCount">
+            <summary>
+            Gets the wear leveling count when available.
+            </summary>
+        </member>
+        <member name="P:DiskInfoToolkit.StorageDevice.PowerOnCount">
+            <summary>
+            Gets the power-on count when available.
+            </summary>
+        </member>
+        <member name="P:DiskInfoToolkit.StorageDevice.PowerOnHours">
+            <summary>
+            Gets the power-on hours when available.
+            </summary>
+        </member>
+        <member name="P:DiskInfoToolkit.StorageDevice.TemperatureWarning">
+            <summary>
+            Gets the device warning temperature threshold in degrees Celsius when available.
+            </summary>
+        </member>
+        <member name="P:DiskInfoToolkit.StorageDevice.TemperatureCritical">
+            <summary>
+            Gets the device critical temperature threshold in degrees Celsius when available.
+            </summary>
+        </member>
+        <member name="P:DiskInfoToolkit.StorageDevice.Csmi">
+            <summary>
+            Gets or sets the CSMI information associated with the device.
+            </summary>
+        </member>
+        <member name="P:DiskInfoToolkit.StorageDevice.LastUpdatedUtc">
+            <summary>
+            Represents the last time when the information about the disk was updated.<br/>
+            This can be useful for caching scenarios to determine how fresh the information is.
+            </summary>
+        </member>
+        <member name="P:DiskInfoToolkit.StorageDevice.Partitions">
+            <summary>
+            Gets or sets the partitions associated with the device.
+            </summary>
+        </member>
+        <member name="P:DiskInfoToolkit.StorageDevice.IsDynamicDisk">
+            <summary>
+            Gets a value indicating whether any partition on this disk belongs to a dynamic disk layout.
+            </summary>
+        </member>
+        <member name="P:DiskInfoToolkit.StorageDevice.IsOtherOperatingSystemDisk">
+            <summary>
+            Gets a value indicating whether the disk contains at least one partition recognized as belonging to another
+            operating system.
+            </summary>
+        </member>
+        <member name="P:DiskInfoToolkit.StorageDevice.TotalPartitionFreeSpaceBytes">
+            <summary>
+            Gets the sum of all known partition free-space values on the disk.
+            </summary>
+            <remarks>If <see cref="P:DiskInfoToolkit.StorageDevice.IsOtherOperatingSystemDisk"/> is true, this is not supported and will always return null.</remarks>
+        </member>
+        <member name="T:DiskInfoToolkit.StorageDevicesChangedEventArgs">
+            <summary>
+            Defines the event arguments for storage devices changed events.
+            </summary>
+        </member>
+        <member name="M:DiskInfoToolkit.StorageDevicesChangedEventArgs.#ctor">
+            <summary>
+            Initializes a new instance of <see cref="T:DiskInfoToolkit.StorageDevicesChangedEventArgs"/> class.
+            </summary>
+        </member>
+        <member name="P:DiskInfoToolkit.StorageDevicesChangedEventArgs.Added">
+            <summary>
+            Gets or sets the collection of storage devices that have been added.
+            </summary>
+        </member>
+        <member name="P:DiskInfoToolkit.StorageDevicesChangedEventArgs.Removed">
+            <summary>
+            Gets or sets the collection of storage devices that have been removed.
+            </summary>
+        </member>
+        <member name="P:DiskInfoToolkit.StorageDevicesChangedEventArgs.Updated">
+            <summary>
+            Gets or sets the collection of storage devices that have been updated.
+            </summary>
+        </member>
+        <member name="P:DiskInfoToolkit.StorageDevicesChangedEventArgs.Current">
+            <summary>
+            Gets or sets the collection of storage devices that are currently present after the changes.
+            </summary>
+        </member>
+        <member name="P:DiskInfoToolkit.StorageDevicesChangedEventArgs.HasChanges">
+            <summary>
+            Gets a value indicating whether any added, removed or updated devices are present.
+            </summary>
+        </member>
+        <member name="T:DiskInfoToolkit.StorageHealthStatus">
+            <summary>
+            Defines the summarized SMART health status of a storage device.
+            </summary>
+        </member>
+        <member name="F:DiskInfoToolkit.StorageHealthStatus.Good">
+            <summary>
+            The device health is good.
+            </summary>
+        </member>
+        <member name="F:DiskInfoToolkit.StorageHealthStatus.Caution">
+            <summary>
+            The device health should be monitored.
+            </summary>
+        </member>
+        <member name="F:DiskInfoToolkit.StorageHealthStatus.Warning">
+            <summary>
+            The device health is critically low, but not yet in a failed state.
+            </summary>
+        </member>
+        <member name="F:DiskInfoToolkit.StorageHealthStatus.Bad">
+            <summary>
+            The device health indicates a failed or failing state.
+            </summary>
+        </member>
+        <member name="T:DiskInfoToolkit.StorageNvmeInfo">
+            <summary>
+            Represents storage nvme info.
+            </summary>
+        </member>
+        <member name="M:DiskInfoToolkit.StorageNvmeInfo.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:DiskInfoToolkit.StorageNvmeInfo"/> class.
+            </summary>
+        </member>
+        <member name="P:DiskInfoToolkit.StorageNvmeInfo.IdentifyControllerData">
+            <summary>
+            Gets or sets the identify controller data.
+            </summary>
+        </member>
+        <member name="P:DiskInfoToolkit.StorageNvmeInfo.IdentifyNamespaceData">
+            <summary>
+            Gets or sets the identify namespace data.
+            </summary>
+        </member>
+        <member name="P:DiskInfoToolkit.StorageNvmeInfo.SmartLogData">
+            <summary>
+            Gets or sets the smart log data.
+            </summary>
+        </member>
+        <member name="P:DiskInfoToolkit.StorageNvmeInfo.NamespaceSize">
+            <summary>
+            Gets or sets the namespace size.
+            </summary>
+        </member>
+        <member name="P:DiskInfoToolkit.StorageNvmeInfo.NamespaceCapacity">
+            <summary>
+            Gets or sets the namespace capacity.
+            </summary>
+        </member>
+        <member name="P:DiskInfoToolkit.StorageNvmeInfo.NamespaceUtilization">
+            <summary>
+            Gets or sets the namespace utilization.
+            </summary>
+        </member>
+        <member name="P:DiskInfoToolkit.StorageNvmeInfo.NamespaceLbaDataSize">
+            <summary>
+            Gets or sets the namespace lba data size.
+            </summary>
+        </member>
+        <member name="P:DiskInfoToolkit.StorageNvmeInfo.NamespaceFormattedLbaIndex">
+            <summary>
+            Gets or sets the namespace formatted lba index.
+            </summary>
+        </member>
+        <member name="P:DiskInfoToolkit.StorageNvmeInfo.IntelIdentifyControllerData">
+            <summary>
+            Gets or sets the intel identify controller data.
+            </summary>
+        </member>
+        <member name="P:DiskInfoToolkit.StorageNvmeInfo.IntelSmartLogData">
+            <summary>
+            Gets or sets the intel smart log data.
+            </summary>
+        </member>
+        <member name="T:DiskInfoToolkit.StoragePartitionInfo">
+            <summary>
+            Represents storage partition info.
+            </summary>
+        </member>
+        <member name="M:DiskInfoToolkit.StoragePartitionInfo.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:DiskInfoToolkit.StoragePartitionInfo"/> class.
+            </summary>
+        </member>
+        <member name="P:DiskInfoToolkit.StoragePartitionInfo.PartitionStyle">
+            <summary>
+            Gets or sets the partition style.
+            </summary>
+        </member>
+        <member name="P:DiskInfoToolkit.StoragePartitionInfo.StartingOffset">
+            <summary>
+            Gets or sets the starting offset.
+            </summary>
+        </member>
+        <member name="P:DiskInfoToolkit.StoragePartitionInfo.PartitionLength">
+            <summary>
+            Gets or sets the partition length.
+            </summary>
+        </member>
+        <member name="P:DiskInfoToolkit.StoragePartitionInfo.PartitionNumber">
+            <summary>
+            Gets or sets the partition number.
+            </summary>
+        </member>
+        <member name="P:DiskInfoToolkit.StoragePartitionInfo.RewritePartition">
+            <summary>
+            Gets or sets the rewrite partition.
+            </summary>
+        </member>
+        <member name="P:DiskInfoToolkit.StoragePartitionInfo.IsServicePartition">
+            <summary>
+            Gets or sets a value indicating whether service partition.
+            </summary>
+        </member>
+        <member name="P:DiskInfoToolkit.StoragePartitionInfo.IsDynamicDiskPartition">
+            <summary>
+            Gets or sets a value indicating whether dynamic disk partition.
+            </summary>
+        </member>
+        <member name="P:DiskInfoToolkit.StoragePartitionInfo.DriveLetter">
+            <summary>
+            Gets or sets the drive letter.
+            </summary>
+        </member>
+        <member name="P:DiskInfoToolkit.StoragePartitionInfo.VolumePath">
+            <summary>
+            Gets or sets the volume path.
+            </summary>
+        </member>
+        <member name="P:DiskInfoToolkit.StoragePartitionInfo.AvailableFreeSpaceBytes">
+            <summary>
+            Gets or sets the available free space bytes.
+            </summary>
+        </member>
+        <member name="P:DiskInfoToolkit.StoragePartitionInfo.MbrPartitionType">
+            <summary>
+            Gets or sets the mbr partition type.
+            </summary>
+        </member>
+        <member name="P:DiskInfoToolkit.StoragePartitionInfo.MbrBootIndicator">
+            <summary>
+            Gets or sets the mbr boot indicator.
+            </summary>
+        </member>
+        <member name="P:DiskInfoToolkit.StoragePartitionInfo.MbrRecognizedPartition">
+            <summary>
+            Gets or sets the mbr recognized partition.
+            </summary>
+        </member>
+        <member name="P:DiskInfoToolkit.StoragePartitionInfo.MbrPartitionID">
+            <summary>
+            Gets or sets the mbr partition id.
+            </summary>
+        </member>
+        <member name="P:DiskInfoToolkit.StoragePartitionInfo.GptPartitionType">
+            <summary>
+            Gets or sets the gpt partition type.
+            </summary>
+        </member>
+        <member name="P:DiskInfoToolkit.StoragePartitionInfo.GptPartitionID">
+            <summary>
+            Gets or sets the gpt partition id.
+            </summary>
+        </member>
+        <member name="P:DiskInfoToolkit.StoragePartitionInfo.GptAttributes">
+            <summary>
+            Gets or sets the gpt attributes.
+            </summary>
+        </member>
+        <member name="P:DiskInfoToolkit.StoragePartitionInfo.GptName">
+            <summary>
+            Gets or sets the gpt name.
+            </summary>
+        </member>
+        <member name="P:DiskInfoToolkit.StoragePartitionInfo.IsOtherOperatingSystemPartition">
+            <summary>
+            Gets a value indicating whether the partition appears to belong to another operating system.
+            </summary>
+        </member>
+        <member name="T:DiskInfoToolkit.StorageProbeOperation">
+            <summary>
+            Defines individual probe operations that can provide disk data.
+            </summary>
+        </member>
+        <member name="T:DiskInfoToolkit.StorageProbePlan">
+            <summary>
+            Stores the successful probe operations for a storage device.
+            </summary>
+        </member>
+        <member name="M:DiskInfoToolkit.StorageProbePlan.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:DiskInfoToolkit.StorageProbePlan"/> class.
+            </summary>
+        </member>
+        <member name="P:DiskInfoToolkit.StorageProbePlan.IsInitialized">
+            <summary>
+            Gets or sets a value indicating whether the plan was created from a completed full probe run.
+            </summary>
+        </member>
+        <member name="P:DiskInfoToolkit.StorageProbePlan.Strategy">
+            <summary>
+            Gets or sets the probe strategy that produced this plan.
+            </summary>
+        </member>
+        <member name="P:DiskInfoToolkit.StorageProbePlan.ControllerFamily">
+            <summary>
+            Gets or sets the controller family that produced this plan.
+            </summary>
+        </member>
+        <member name="P:DiskInfoToolkit.StorageProbePlan.DevicePath">
+            <summary>
+            Gets or sets the device path that produced this plan.
+            </summary>
+        </member>
+        <member name="P:DiskInfoToolkit.StorageProbePlan.DeviceInstanceID">
+            <summary>
+            Gets or sets the device instance ID that produced this plan.
+            </summary>
+        </member>
+        <member name="P:DiskInfoToolkit.StorageProbePlan.ControllerService">
+            <summary>
+            Gets or sets the controller service that produced this plan.
+            </summary>
+        </member>
+        <member name="P:DiskInfoToolkit.StorageProbePlan.ControllerIdentifier">
+            <summary>
+            Gets or sets the controller identifier that produced this plan.
+            </summary>
+        </member>
+        <member name="P:DiskInfoToolkit.StorageProbePlan.SuccessfulOperationsStore">
+            <summary>
+            <inheritdoc cref="P:DiskInfoToolkit.StorageProbePlan.SuccessfulOperations"/>
+            </summary>
+        </member>
+        <member name="P:DiskInfoToolkit.StorageProbePlan.SuccessfulOperations">
+            <summary>
+            Gets or sets the successful standard-property and strategy-specific probe operations in execution order.
+            </summary>
+        </member>
+        <member name="M:DiskInfoToolkit.StorageProbePlan.CreateForFullProbe(DiskInfoToolkit.StorageDevice)">
+            <summary>
+            Creates a new uninitialized plan for the specified storage device.
+            </summary>
+            <param name="device">The storage device.</param>
+            <returns>A new <see cref="T:DiskInfoToolkit.StorageProbePlan"/> instance.</returns>
+        </member>
+        <member name="M:DiskInfoToolkit.StorageProbePlan.CreateForFullProbe(DiskInfoToolkit.StorageDevice,DiskInfoToolkit.StorageProbePlan)">
+            <summary>
+            Creates a new uninitialized plan for the specified storage device and preserves already known standard-property operations.
+            </summary>
+            <param name="device">The storage device.</param>
+            <param name="previousPlan">The previous probe plan.</param>
+            <returns>A new <see cref="T:DiskInfoToolkit.StorageProbePlan"/> instance.</returns>
+        </member>
+        <member name="M:DiskInfoToolkit.StorageProbePlan.CaptureDeviceState(DiskInfoToolkit.StorageDevice)">
+            <summary>
+            Captures the stable device/controller state used to validate this plan during future refreshes.
+            </summary>
+            <param name="device">The storage device.</param>
+        </member>
+        <member name="M:DiskInfoToolkit.StorageProbePlan.IsCompatibleWith(DiskInfoToolkit.StorageDevice)">
+            <summary>
+            Determines whether the cached probe plan can still be used for the specified storage device.
+            </summary>
+            <param name="device">The storage device.</param>
+            <returns>Whether this probe plan matches the current device/controller state.</returns>
+        </member>
+        <member name="M:DiskInfoToolkit.StorageProbePlan.IsStandardPropertyCompatibleWith(DiskInfoToolkit.StorageDevice)">
+            <summary>
+            Determines whether the cached standard-property part of the probe plan can still be used for the specified storage device.
+            </summary>
+            <param name="device">The storage device.</param>
+            <returns>Whether the standard-property probe plan matches the current device/controller state.</returns>
+        </member>
+        <member name="M:DiskInfoToolkit.StorageProbePlan.IsStandardPropertyOperation(DiskInfoToolkit.StorageProbeOperation)">
+            <summary>
+            Determines whether the specified operation belongs to the standard property probing phase.
+            </summary>
+            <param name="operation">The probe operation.</param>
+            <returns>Whether the specified operation belongs to the standard property probing phase.</returns>
+        </member>
+        <member name="M:DiskInfoToolkit.StorageProbePlan.RecordSuccess(DiskInfoToolkit.StorageProbeOperation)">
+            <summary>
+            Records a successful probe operation.
+            </summary>
+            <param name="operation">The successful probe operation.</param>
+        </member>
+        <member name="M:DiskInfoToolkit.StorageProbePlan.Contains(DiskInfoToolkit.StorageProbeOperation)">
+            <summary>
+            Determines whether the specified operation is part of this plan.
+            </summary>
+            <param name="operation">The probe operation.</param>
+            <returns>Whether the operation is part of this plan.</returns>
+        </member>
+        <member name="T:DiskInfoToolkit.StorageProtocolType">
+            <summary>
+            Defines storage protocol type values.
+            </summary>
+        </member>
+        <member name="T:DiskInfoToolkit.StorageScsiInfo">
+            <summary>
+            Represents storage scsi info.
+            </summary>
+        </member>
+        <member name="M:DiskInfoToolkit.StorageScsiInfo.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:DiskInfoToolkit.StorageScsiInfo"/> class.
+            </summary>
+        </member>
+        <member name="P:DiskInfoToolkit.StorageScsiInfo.PortNumber">
+            <summary>
+            Gets or sets the port number.
+            </summary>
+        </member>
+        <member name="P:DiskInfoToolkit.StorageScsiInfo.PathID">
+            <summary>
+            Gets or sets the path id.
+            </summary>
+        </member>
+        <member name="P:DiskInfoToolkit.StorageScsiInfo.TargetID">
+            <summary>
+            Gets or sets the target id.
+            </summary>
+        </member>
+        <member name="P:DiskInfoToolkit.StorageScsiInfo.Lun">
+            <summary>
+            Gets or sets the lun.
+            </summary>
+        </member>
+        <member name="P:DiskInfoToolkit.StorageScsiInfo.LastLogicalBlockAddress">
+            <summary>
+            Gets or sets the last logical block address.
+            </summary>
+        </member>
+        <member name="P:DiskInfoToolkit.StorageScsiInfo.LogicalBlockLength">
+            <summary>
+            Gets or sets the logical block length.
+            </summary>
+        </member>
+        <member name="P:DiskInfoToolkit.StorageScsiInfo.PeripheralDeviceType">
+            <summary>
+            Gets or sets the peripheral device type.
+            </summary>
+        </member>
+        <member name="P:DiskInfoToolkit.StorageScsiInfo.RemovableMedia">
+            <summary>
+            Gets or sets the removable media.
+            </summary>
+        </member>
+        <member name="P:DiskInfoToolkit.StorageScsiInfo.InquiryVendorID">
+            <summary>
+            Gets or sets the inquiry vendor id.
+            </summary>
+        </member>
+        <member name="P:DiskInfoToolkit.StorageScsiInfo.InquiryProductID">
+            <summary>
+            Gets or sets the inquiry product id.
+            </summary>
+        </member>
+        <member name="P:DiskInfoToolkit.StorageScsiInfo.InquiryProductRevision">
+            <summary>
+            Gets or sets the inquiry product revision.
+            </summary>
+        </member>
+        <member name="P:DiskInfoToolkit.StorageScsiInfo.DeviceIdentifier">
+            <summary>
+            Gets or sets the device identifier.
+            </summary>
+        </member>
+        <member name="T:DiskInfoToolkit.StorageTransportKind">
+            <summary>
+            Defines storage transport kind values.
+            </summary>
+        </member>
+        <member name="T:DiskInfoToolkit.StorageUsbInfo">
+            <summary>
+            Represents storage USB info.
+            </summary>
+        </member>
+        <member name="M:DiskInfoToolkit.StorageUsbInfo.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:DiskInfoToolkit.StorageUsbInfo"/> class.
+            </summary>
+        </member>
+        <member name="P:DiskInfoToolkit.StorageUsbInfo.BridgeFamily">
+            <summary>
+            Gets or sets the bridge family.
+            </summary>
+        </member>
+        <member name="P:DiskInfoToolkit.StorageUsbInfo.MassStorageProtocolName">
+            <summary>
+            Gets or sets the mass storage protocol name.
+            </summary>
+        </member>
+        <member name="P:DiskInfoToolkit.StorageUsbInfo.IsMassStorageLike">
+            <summary>
+            Gets or sets a value indicating whether mass storage like.
+            </summary>
+        </member>
+        <member name="P:DiskInfoToolkit.StorageUsbInfo.NvmeSetupMode">
+            <summary>
+            Gets or sets the nvme setup mode.
+            </summary>
+        </member>
+    </members>
+</doc>

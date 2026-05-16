@@ -130,5 +130,17 @@ namespace StarTrayTemperature.Properties {
                 this["showGPU"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool PawnIODeclined {
+            get {
+                return ((bool)(this["PawnIODeclined"]));
+            }
+            set {
+                this["PawnIODeclined"] = value;
+            }
+        }
     }
 }

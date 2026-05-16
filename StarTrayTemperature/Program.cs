@@ -23,7 +23,7 @@ namespace StarTrayTemperature
                 Application.SetCompatibleTextRenderingDefault(false);
                 Application.Run(new IconTray());
             }
-            catch 
+            catch
             {
                 Environment.Exit(0);
             }
