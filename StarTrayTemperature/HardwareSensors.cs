@@ -5,6 +5,7 @@ using System.Drawing.Text;
 using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
+using LibreHardwareMonitor.Hardware;
 
 namespace StarTrayTemperature
 {
@@ -45,6 +46,10 @@ namespace StarTrayTemperature
             state.NotifyIcon.Text = $"{type} Temperature: {state.CurrentTemp}°C";
             state.NotifyIcon.Icon = state.CreateIcon(state.CurrentTemp, this);
             state.NotifyIcon.Visible = true;
+            state.NotifyIcon.DoubleClick += (s, e) => 
+            {
+                try { System.Diagnostics.Process.Start("taskmgr"); } catch { }
+            };
 
             state.Timer = new Timer();
             state.Timer.Interval = 1000;
@@ -81,29 +86,43 @@ namespace StarTrayTemperature
             GC.Collect();
         }
 
+        internal void RestartSensor(string type)
+        {
+            StopSensor(type);
+            StartSensor(type);
+        }
+
         private void Timer_Tick(string type)
         {
             if (!ActiveSensors.ContainsKey(type)) return;
             try
             {
                 var state = ActiveSensors[type];
-                computer.Hardware[state.HardwareID].Update();
-                int newTemp = Convert.ToInt32(computer.Hardware[state.HardwareID].Sensors[state.SensorID].Value);
+                var hardware = computer.Hardware[state.HardwareID];
+                hardware.Update();
+                int newTemp = Convert.ToInt32(hardware.Sensors[state.SensorID].Value);
 
                 if (state.ShouldIgnoreTemp(newTemp)) return;
 
                 state.CurrentTemp = newTemp;
                 int displayTemp = state.CurrentTemp;
 
-                string temperatureText = $"{type} Temperature: {displayTemp}°C";
-
                 if (useFahrenheit)
                 {
                     displayTemp = Convert.ToInt32(displayTemp * 1.8 + 32);
-                    temperatureText = $"{type} Temperature: {displayTemp}°F";
                 }
 
-                state.NotifyIcon.Text = temperatureText;
+                string tooltipText = state.GetTooltipText(hardware, useFahrenheit);
+
+                tooltipText = tooltipText.TrimEnd('\n');
+                if (string.IsNullOrEmpty(tooltipText))
+                {
+                    tooltipText = $"StarTray ({type})";
+                }
+                
+                if (tooltipText.Length > 63) tooltipText = tooltipText.Substring(0, 63);
+
+                state.NotifyIcon.Text = tooltipText;
 
                 if (state.NotifyIcon.Icon != null)
                 {

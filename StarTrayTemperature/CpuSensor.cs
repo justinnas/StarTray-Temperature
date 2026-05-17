@@ -36,10 +36,53 @@ namespace StarTrayTemperature
             GetCommonContextMenu(tray);
         }
 
-        public override void GetHardwareInfo(MenuItem information)
+        public override void AddInfoMenuHardware(IconTray tray, MenuItem information)
         {
             information.MenuItems.Add(new MenuItem("Processor:") { Enabled = false });
             information.MenuItems.Add(new MenuItem(GetCpuName()) { Enabled = false });
+        }
+
+        public override string GetTooltipText(IHardware hardware, bool useFahrenheit)
+        {
+            string tooltipText = "";
+            if (Properties.Settings.Default.CPU_HoverShowTemperature)
+            {
+                int displayTemp = CurrentTemp;
+                string scale = "°C";
+                if (useFahrenheit)
+                {
+                    displayTemp = Convert.ToInt32(displayTemp * 1.8 + 32);
+                    scale = "°F";
+                }
+                tooltipText += $"🌡️  {displayTemp}{scale}\n";
+            }
+
+            if (Properties.Settings.Default.CPU_HoverShowLoad)
+            {
+                var loadSensor = Array.Find(hardware.Sensors, s => s != null && s.SensorType == SensorType.Load && s.Name == "CPU Total");
+                if (loadSensor != null && loadSensor.Value.HasValue) tooltipText += $"🧠  {loadSensor.Value.Value:F1}%\n";
+            }
+            if (Properties.Settings.Default.CPU_HoverShowPower)
+            {
+                var powerSensor = Array.Find(hardware.Sensors, s => s != null && s.SensorType == SensorType.Power && s.Name == "Package");
+                if (powerSensor != null && powerSensor.Value.HasValue) tooltipText += $"⚡  {powerSensor.Value.Value:F1}W\n";
+            }
+            if (Properties.Settings.Default.CPU_HoverShowClock)
+            {
+                var clockSensor = Array.Find(hardware.Sensors, s => s != null && s.SensorType == SensorType.Clock && s.Name == "Cores (Average)");
+                if (clockSensor != null && clockSensor.Value.HasValue) 
+                {
+                    tooltipText += $"⏱️  {clockSensor.Value.Value / 1000f:F2}GHz\n";
+                }
+            }
+
+            if (tooltipText != "")
+            {
+                string tempText = tooltipText;
+                tooltipText = "CPU\n" + tempText;
+            }
+
+            return tooltipText;
         }
 
         public override void HandleMissingSensor(IconTray tray)
@@ -64,10 +107,52 @@ namespace StarTrayTemperature
             return cpuName;
         }
 
-        public override void AddSpecificMenuItems(IconTray tray)
+        public override void AddCustomMenuItems(IconTray tray)
         {
+            MenuItem hoverOptions = new MenuItem("Hover display");
+            
+            MenuItem showTemp = new MenuItem("Show Temperature (🌡️)");
+            showTemp.Checked = Properties.Settings.Default.CPU_HoverShowTemperature;
+            showTemp.Click += (s, e) => {
+                showTemp.Checked = !showTemp.Checked;
+                Properties.Settings.Default.CPU_HoverShowTemperature = showTemp.Checked;
+                Properties.Settings.Default.Save();
+            };
+
+            MenuItem showLoad = new MenuItem("Show Load (🧠)");
+            showLoad.Checked = Properties.Settings.Default.CPU_HoverShowLoad;
+            showLoad.Click += (s, e) => {
+                showLoad.Checked = !showLoad.Checked;
+                Properties.Settings.Default.CPU_HoverShowLoad = showLoad.Checked;
+                Properties.Settings.Default.Save();
+            };
+
+            MenuItem showPower = new MenuItem("Show Power Usage (⚡)");
+            showPower.Checked = Properties.Settings.Default.CPU_HoverShowPower;
+            showPower.Click += (s, e) => {
+                showPower.Checked = !showPower.Checked;
+                Properties.Settings.Default.CPU_HoverShowPower = showPower.Checked;
+                Properties.Settings.Default.Save();
+            };
+
+            MenuItem showClock = new MenuItem("Show Clock Speed (⏱️)");
+            showClock.Checked = Properties.Settings.Default.CPU_HoverShowClock;
+            showClock.Click += (s, e) => {
+                showClock.Checked = !showClock.Checked;
+                Properties.Settings.Default.CPU_HoverShowClock = showClock.Checked;
+                Properties.Settings.Default.Save();
+            };
+
+            hoverOptions.MenuItems.Add(showTemp);
+            hoverOptions.MenuItems.Add(showLoad);
+            hoverOptions.MenuItems.Add(showPower);
+            hoverOptions.MenuItems.Add(showClock);
+            
+            ContextMenu.MenuItems.Add(hoverOptions);
+
             if (!PawnIOManager.IsPawnIoInstalled())
             {
+                ContextMenu.MenuItems.Add("-");
                 MenuItem installPawnIO = new MenuItem("Install PawnIO Driver");
                 installPawnIO.Click += (s, e) => {
                     PawnIOManager.PromptAndInstallPawnIO(true);

@@ -1,9 +1,10 @@
+using LibreHardwareMonitor.Hardware;
 using System;
+using System.Diagnostics;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Drawing.Text;
 using System.Windows.Forms;
-using LibreHardwareMonitor.Hardware;
 
 namespace StarTrayTemperature
 {
@@ -33,9 +34,11 @@ namespace StarTrayTemperature
 
         public abstract void FindSensor(Computer computer);
         
-        public abstract void GetHardwareInfo(MenuItem information);
+        public abstract void AddInfoMenuHardware(IconTray tray, MenuItem information);
         
-        public virtual void AddSpecificMenuItems(IconTray tray) { }
+        public abstract string GetTooltipText(IHardware hardware, bool useFahrenheit);
+        
+        public virtual void AddCustomMenuItems(IconTray tray) { }
         
         public virtual bool ShouldIgnoreTemp(int newTemp) { return false; }
 
@@ -73,6 +76,10 @@ namespace StarTrayTemperature
 
             ContextMenu.MenuItems.Add(colorModes);
 
+            // +=-=========+====================--=+
+            // (Optional) Extra options per sensor
+            // +-===+=================+==========--==+
+            AddCustomMenuItems(tray);
 
             // +=-=========+====================--=+
             // Global options
@@ -100,29 +107,23 @@ namespace StarTrayTemperature
 
             ContextMenu.MenuItems.Add(globalOptions);
 
-
             // +=-=========+====================--=+
             // Hardware info
             // +-===+=================+==========--==+
-            MenuItem information = new MenuItem("Info");
-            GetHardwareInfo(information);
+            MenuItem information = new MenuItem("More");
+            AddInfoMenuHardware(tray, information);
 
             information.MenuItems.Add("-");
-            information.MenuItems.Add(new MenuItem($"{tray.AppLabel} {tray.VersionLabel} {tray.CopyrightLabel}") { Enabled = false });
+            MenuItem copyrightItem = new MenuItem($"{tray.AppLabel} {tray.VersionLabel} {tray.CopyrightLabel}");
+            copyrightItem.Click += (s, e) => Process.Start("https://github.com/justinnas/StarTray-Temperature");
+            information.MenuItems.Add(copyrightItem);
 
             ContextMenu.MenuItems.Add(information);
-            ContextMenu.MenuItems.Add("-");
-
-
-            // +=-=========+====================--=+
-            // (Optional) Extra options per sensor
-            // +-===+=================+==========--==+
-            AddSpecificMenuItems(tray);
-
 
             // +=-=========+====================--=+
             // Exit
             // +-===+=================+==========--==+
+            ContextMenu.MenuItems.Add("-");
             MenuItem exitMenuItem = new MenuItem("Exit");
             exitMenuItem.Click += tray.ExitMenuItem_Click;
             ContextMenu.MenuItems.Add(exitMenuItem);

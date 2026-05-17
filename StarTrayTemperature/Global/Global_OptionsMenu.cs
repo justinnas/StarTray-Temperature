@@ -111,7 +111,7 @@ namespace StarTrayTemperature
         internal void ChangeScale_Click(object sender, EventArgs e)
         {
             useFahrenheit = !useFahrenheit;
-            string newText = useFahrenheit ? "Change to Fahrenheit" : "Change to Celsius";
+            string newText = useFahrenheit ? "Change to Celsius" : "Change to Fahrenheit";
 
             foreach (var state in ActiveSensors.Values)
             {
