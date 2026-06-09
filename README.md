@@ -15,11 +15,15 @@
 
 ## 📌 Important
 
-StarTray relies on the [LibreHardwareMonitorLib](https://github.com/LibreHardwareMonitor/LibreHardwareMonitor), which uses WinRing0, to collect temperature data. Due to recent changes in Microsoft Defender, the WinRing0 driver (identified as **StarTray.sys** when used by StarTray) is now **flagged as vulnerable**. This change impacts many applications that depend on WinRing0. Please [read the official Microsoft's blog post before proceeding](https://support.microsoft.com/en-us/windows/microsoft-defender-antivirus-alert-vulnerabledriver-winnt-winring0-eb057830-d77b-41a2-9a34-015a5d203c42).
+2026 June Update: The team behind LibreHardwareMonitorLib had made significant changes! Currently working on a new version of StarTray powered by PawnIO which will completely replace WinRing0 and fix antivirus issues. It will also include new quality of life updates. Stay tuned! 
 
-Currently, there are no official releases of LibreHardwareMonitorLib that do not use WinRing0. Prerelease versions have switched to the PawnIO driver, and once a stable release is available, I will update StarTray accordingly.
+P.S. [StarTray Battery](https://github.com/justinnas/StarTray-Battery) is not affected by WinRing0 issues as it uses a custom independent solution.
 
-In the meantime, you can either follow the guidance provided in [Microsoft's blog post](https://support.microsoft.com/en-us/windows/microsoft-defender-antivirus-alert-vulnerabledriver-winnt-winring0-eb057830-d77b-41a2-9a34-015a5d203c42) or temporarily stop using StarTray if you are uncomfortable with the use of the WinRing0 driver. I apologize for the inconvenience.
+~~StarTray relies on the [LibreHardwareMonitorLib](https://github.com/LibreHardwareMonitor/LibreHardwareMonitor), which uses WinRing0, to collect temperature data. Due to recent changes in Microsoft Defender, the WinRing0 driver (identified as **StarTray.sys** when used by StarTray) is now **flagged as vulnerable**. This change impacts many applications that depend on WinRing0. Please [read the official Microsoft's blog post before proceeding](https://support.microsoft.com/en-us/windows/microsoft-defender-antivirus-alert-vulnerabledriver-winnt-winring0-eb057830-d77b-41a2-9a34-015a5d203c42).~~
+
+~~Currently, there are no official releases of LibreHardwareMonitorLib that do not use WinRing0. Prerelease versions have switched to the PawnIO driver, and once a stable release is available, I will update StarTray accordingly.~~
+
+~~In the meantime, you can either follow the guidance provided in [Microsoft's blog post](https://support.microsoft.com/en-us/windows/microsoft-defender-antivirus-alert-vulnerabledriver-winnt-winring0-eb057830-d77b-41a2-9a34-015a5d203c42) or temporarily stop using StarTray if you are uncomfortable with the use of the WinRing0 driver. I apologize for the inconvenience.~~
 
 <br>
 
