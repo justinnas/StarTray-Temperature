@@ -37,30 +37,6 @@ namespace StarTrayTemperature.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string IconPath_CPU {
-            get {
-                return ((string)(this["IconPath_CPU"]));
-            }
-            set {
-                this["IconPath_CPU"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string IconPath_GPU {
-            get {
-                return ((string)(this["IconPath_GPU"]));
-            }
-            set {
-                this["IconPath_GPU"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("True")]
         public bool showCPU {
             get {
@@ -178,50 +154,88 @@ namespace StarTrayTemperature.Properties {
             get { return ((bool)(this["GPU_HoverShowMemory"])); }
             set { this["GPU_HoverShowMemory"] = value; }
         }
-        
+
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string ColorMode_CPU {
-            get {
-                return ((string)(this["ColorMode_CPU"]));
+        public global::System.Drawing.Color CPU_icon_color_1
+        {
+            get
+            {
+                return ((global::System.Drawing.Color)(this["CPU_icon_color_1"]));
             }
-            set {
-                this["ColorMode_CPU"] = value;
+            set
+            {
+                this["CPU_icon_color_1"] = value;
             }
         }
-        
+
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        public global::System.Drawing.Color TextColor_CPU {
-            get {
-                return ((global::System.Drawing.Color)(this["TextColor_CPU"]));
+        public global::System.Drawing.Color CPU_icon_color_2
+        {
+            get
+            {
+                return ((global::System.Drawing.Color)(this["CPU_icon_color_2"]));
             }
-            set {
-                this["TextColor_CPU"] = value;
+            set
+            {
+                this["CPU_icon_color_2"] = value;
             }
         }
-        
+
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string ColorMode_GPU {
-            get {
-                return ((string)(this["ColorMode_GPU"]));
+        public global::System.Drawing.Color CPU_text_color
+        {
+            get
+            {
+                return ((global::System.Drawing.Color)(this["CPU_text_color"]));
             }
-            set {
-                this["ColorMode_GPU"] = value;
+            set
+            {
+                this["CPU_text_color"] = value;
             }
         }
-        
+
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        public global::System.Drawing.Color TextColor_GPU {
-            get {
-                return ((global::System.Drawing.Color)(this["TextColor_GPU"]));
+        public global::System.Drawing.Color GPU_icon_color_1
+        {
+            get
+            {
+                return ((global::System.Drawing.Color)(this["GPU_icon_color_1"]));
             }
-            set {
-                this["TextColor_GPU"] = value;
+            set
+            {
+                this["GPU_icon_color_1"] = value;
+            }
+        }
+
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        public global::System.Drawing.Color GPU_icon_color_2
+        {
+            get
+            {
+                return ((global::System.Drawing.Color)(this["GPU_icon_color_2"]));
+            }
+            set
+            {
+                this["GPU_icon_color_2"] = value;
+            }
+        }
+
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        public global::System.Drawing.Color GPU_text_color
+        {
+            get
+            {
+                return ((global::System.Drawing.Color)(this["GPU_text_color"]));
+            }
+            set
+            {
+                this["GPU_text_color"] = value;
             }
         }
     }

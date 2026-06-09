@@ -133,6 +133,7 @@
     <Reference Include="System.Deployment" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Net.Http" />
+    <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
   </ItemGroup>
@@ -141,17 +142,19 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="HardwareSensor.cs" />
+    <Compile Include="ThemeManager.cs" />
     <Compile Include="CpuSensor.cs" />
     <Compile Include="GpuSensor.cs" />
-    <Compile Include="HardwareSensors.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="PawnIOManager.cs" />
+    <Compile Include="DynamicIconRenderer.cs" />
     <Compile Include="IconTray.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="IconTray.Designer.cs">
-      <DependentUpon>IconTray.cs</DependentUpon>
+    <Compile Include="PawnIOManager.cs" />
+    <Compile Include="InitIconTray.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="InitIconTray.Designer.cs">
+      <DependentUpon>InitIconTray.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -199,37 +202,7 @@
     <Content Include="Resources\cpuicon.ico">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\cpuicon_blue.ico">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Resources\cpuicon_blue11.ico">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Resources\cpuicon_dark.ico">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Resources\cpuicon_green.ico">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Resources\cpuicon_red.ico">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
     <Content Include="Resources\gpuicon.ico">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Resources\gpuicon_blue.ico">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Resources\gpuicon_blue11.ico">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Resources\gpuicon_dark.ico">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Resources\gpuicon_green.ico">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Resources\gpuicon_red.ico">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <EmbeddedResource Include="Resources\PawnIO_setup.exe">

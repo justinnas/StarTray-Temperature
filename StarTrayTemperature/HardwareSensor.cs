@@ -17,7 +17,9 @@ namespace StarTrayTemperature
         public int CurrentTemp { get; set; } = 0;
         public NotifyIcon NotifyIcon { get; set; }
         public string ColorMode { get; set; } = "light";
-        public Color IconColor { get; set; } = Color.White;
+        public Color IconColorStart { get; set; } = Color.White;
+        public Color IconColorEnd { get; set; } = Color.White;
+        public Color TextColor { get; set; } = Color.White;
         public string IconPath { get; set; }
         public Image BaseIcon { get; set; }
 
@@ -62,17 +64,20 @@ namespace StarTrayTemperature
             // Theme options
             // +-===+=================+==========--==+
             MenuItem colorModes = new MenuItem($"{Type} theme");
-            string[] themes = { "Light", "Dark", "Blue11", "Green", "Red", "Blue" };
-            string[] themeKeys = { "light", "dark", "blue11", "green", "red", "blue" };
 
-            for (int i = 0; i < themes.Length; i++)
+            for (int i = 0; i < ThemeManager.AvailableThemes.Count; i++)
             {
-                MenuItem mode = new MenuItem($"{themes[i]} Theme");
-                string themeKey = themeKeys[i];
+                Theme theme = ThemeManager.AvailableThemes[i];
+                MenuItem mode = new MenuItem($"{theme.DisplayName} Theme");
+                string themeKey = theme.Id;
                 mode.Click += (s, e) => tray.ApplyTheme(Type, themeKey);
                 colorModes.MenuItems.Add(mode);
-                if (i == 2) colorModes.MenuItems.Add("-");
             }
+
+            colorModes.MenuItems.Add("-");
+            MenuItem openThemesDir = new MenuItem("Open Themes folder...");
+            openThemesDir.Click += (s, e) => Process.Start("explorer.exe", ThemeManager.ThemesDirectory);
+            colorModes.MenuItems.Add(openThemesDir);
 
             ContextMenu.MenuItems.Add(colorModes);
 
@@ -115,7 +120,7 @@ namespace StarTrayTemperature
 
             information.MenuItems.Add("-");
             MenuItem copyrightItem = new MenuItem($"{tray.AppLabel} {tray.VersionLabel} {tray.CopyrightLabel}");
-            copyrightItem.Click += (s, e) => Process.Start("https://github.com/justinnas/StarTray-Temperature");
+            copyrightItem.Click += (s, e) => Process.Start(tray.WebpageURL);
             information.MenuItems.Add(copyrightItem);
 
             ContextMenu.MenuItems.Add(information);
@@ -132,40 +137,25 @@ namespace StarTrayTemperature
         public virtual Icon CreateIcon(int temperature, IconTray tray)
         {
             string temperatureText = temperature.ToString();
-            Bitmap bitmap = new Bitmap(tray.iconWidth, tray.iconHeight);
+            bool highTemp = temperature >= 100;
+            int fontSize = highTemp ? 14 : 18;
+            int moveX = GetIconOffsetX(highTemp);
+            int moveY = GetIconOffsetY(highTemp);
 
-            using (Graphics graphics = Graphics.FromImage(bitmap))
+            using (Font font = new Font(tray.customFontFamily, fontSize))
             {
-                graphics.Clear(Color.Transparent);
-                graphics.DrawImage(BaseIcon, new Rectangle(0, 0, tray.iconWidth, tray.iconHeight));
-
-                bool highTemp = temperature >= 100;
-                int fontSize = highTemp ? 14 : 18;
-                int moveX = GetIconOffsetX(highTemp);
-                int moveY = GetIconOffsetY(highTemp);
-
-                using (Font font = new Font(tray.customFontFamily, fontSize))
-                {
-                    using (Brush brush = new SolidBrush(IconColor))
-                    {
-                        if (IconColor == Color.Black)
-                        {
-                            graphics.TextRenderingHint = TextRenderingHint.SingleBitPerPixelGridFit;
-                            graphics.SmoothingMode = SmoothingMode.HighQuality;
-                        }
-
-                        SizeF textSize = graphics.MeasureString(temperatureText, font);
-                        float x = (bitmap.Width - textSize.Width) / 2 + moveX;
-                        float y = (bitmap.Height - textSize.Height) / 2 + moveY;
-
-                        graphics.DrawString(temperatureText, font, brush, new PointF(x, y));
-                    }
-                }
+                return DynamicIconRenderer.CreateDynamicIcon(
+                    BaseIcon, 
+                    IconColorStart,
+                    IconColorEnd,
+                    TextColor, 
+                    temperatureText, 
+                    tray.iconWidth, 
+                    tray.iconHeight, 
+                    font, 
+                    moveX, 
+                    moveY);
             }
-
-            Icon icon = Icon.FromHandle(bitmap.GetHicon());
-            bitmap.Dispose();
-            return icon;
         }
     }
 }

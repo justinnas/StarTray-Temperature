@@ -1,118 +1,241 @@
-﻿using Microsoft.Win32;
 using System;
-using System.Drawing;
-using System.Drawing.Drawing2D;
-using System.Drawing.Imaging;
-using System.Drawing.Text;
-using System.IO;
-using System.Linq;
-using System.Runtime.InteropServices;
-using System.Windows.Forms;
-using Microsoft.Win32.TaskScheduler;
 using System.Collections.Generic;
+using System.Drawing.Drawing2D;
+using System.Drawing.Text;
+using System.Drawing;
+using System.IO;
+using System.Windows.Forms;
 using LibreHardwareMonitor.Hardware;
-using System.Diagnostics;
 
 namespace StarTrayTemperature
 {
     public partial class IconTray : Form
     {
-        internal string AppLabel = "StarTray";
-        internal string VersionLabel = "v1.2";
-        internal string CopyrightLabel = "© justinnas";
+        public Dictionary<string, HardwareSensor> ActiveSensors = new Dictionary<string, HardwareSensor>();
 
-
-        private string resourcesFolder = Path.Combine(Application.StartupPath, "Resources");
-
-        // --==+
-
-        internal Computer computer;
-
-        // -+
-
-        internal bool useFahrenheit = false;
-        internal bool showCPU = true;
-        internal bool showGPU = true;
-
-        // +=-
-
-        private TaskService taskService = new TaskService();
-        private const string TaskName = "StarTray_RunOnStartup";
-
-        // --==+
-
-        internal int iconWidth = 32;
-        internal int iconHeight = 32;
-        internal FontFamily customFontFamily = FontFamily.GenericSansSerif;
-
-
-        public IconTray()
+        private HardwareSensor GetState(string type)
         {
-            InitializeComponent();
-            LoadGlobalSettings();
-
-            PawnIOManager.CheckAndInstallPawnIO();
-
-            computer = new Computer {
-                IsCpuEnabled = true,
-                IsGpuEnabled = true,
-            };
-
-            computer.Open();
-
-            // Initialize Fonts
-            PrivateFontCollection fontCollection = new PrivateFontCollection();
-            fontCollection.AddFontFile(Path.Combine(resourcesFolder, "font.ttf"));
-            customFontFamily = fontCollection.Families[0];
-
-            // Initialize the icons
-            if (showCPU)
+            if (!ActiveSensors.ContainsKey(type))
             {
-                StartSensor("CPU");
+                if (type == "CPU") ActiveSensors[type] = new CpuSensor();
+                else if (type == "GPU") ActiveSensors[type] = new GpuSensor();
+                else throw new Exception("Unknown sensor type: " + type);
             }
-
-            if (showGPU)
-            {
-                StartSensor("GPU");
-            }
-
-            // Start CPU icon if both of the icons are somehow turned off
-            else if (!showCPU && !showGPU)
-            {
-                StartSensor("CPU");
-            }
-
-            Application.Run();
+            return ActiveSensors[type];
         }
 
-        private bool IsWindowsThemeLight()
+        private void StartSensor(string type)
         {
+            var state = GetState(type);
+            LoadSettings_Sensor(type);
+
+            state.FindSensor(computer);
+
+            if (state.HardwareID == -1 || state.SensorID == -1)
+            {
+                state.HandleMissingSensor(this);
+                if (!ActiveSensors.ContainsKey(type)) return; // If HandleMissingSensor didn't throw, it might mean we just gracefully cancel start.
+                if (state.HardwareID == -1 || state.SensorID == -1) return; // double check it didn't find something or is meant to abort
+            }
+
+            state.BaseIcon = Image.FromFile(state.IconPath);
+
+            state.InitializeContextMenu(this);
+            state.NotifyIcon = new NotifyIcon();
+            state.NotifyIcon.ContextMenu = state.ContextMenu;
+            state.NotifyIcon.Text = $"{type} Temperature: {state.CurrentTemp}°C";
+            state.NotifyIcon.Icon = state.CreateIcon(state.CurrentTemp, this);
+            state.NotifyIcon.Visible = true;
+            state.NotifyIcon.DoubleClick += (s, e) =>
+            {
+                try { System.Diagnostics.Process.Start("taskmgr"); } catch { }
+            };
+
+            state.Timer = new Timer();
+            state.Timer.Interval = 1000;
+            state.Timer.Tick += (s, e) => Timer_Tick(type);
+            state.Timer.Start();
+
+            GC.Collect();
+        }
+        private void StopSensor(string type)
+        {
+            if (!ActiveSensors.ContainsKey(type)) return;
+            var state = ActiveSensors[type];
+            state.BaseIcon?.Dispose();
+            state.Timer?.Stop();
+            state.Timer?.Dispose();
+
+            if (state.NotifyIcon?.Icon != null)
+            {
+                DynamicIconRenderer.DisposeIcon(state.NotifyIcon.Icon);
+            }
+
+            state.NotifyIcon?.ContextMenu?.Dispose();
+            state.NotifyIcon?.Dispose();
+
+            state.StartupMenuItem = null;
+            state.ShowCPUMenuItem = null;
+            state.ShowGPUMenuItem = null;
+            state.ChangeScaleMenuItem = null;
+            state.ContextMenu = null;
+
+            ActiveSensors.Remove(type);
+            GC.Collect();
+        }
+
+        internal void RestartSensor(string type)
+        {
+            StopSensor(type);
+            StartSensor(type);
+        }
+
+        private void Timer_Tick(string type)
+        {
+            if (!ActiveSensors.ContainsKey(type)) return;
             try
             {
-                using (RegistryKey key = Registry.CurrentUser.OpenSubKey(@"Software\Microsoft\Windows\CurrentVersion\Themes\Personalize"))
+                var state = ActiveSensors[type];
+                var hardware = computer.Hardware[state.HardwareID];
+                hardware.Update();
+                int newTemp = Convert.ToInt32(hardware.Sensors[state.SensorID].Value);
+
+                if (state.ShouldIgnoreTemp(newTemp)) return;
+
+                bool tempChanged = newTemp != state.CurrentTemp;
+                state.CurrentTemp = newTemp;
+                int displayTemp = state.CurrentTemp;
+
+                if (useFahrenheit)
                 {
-                    if (key != null)
+                    displayTemp = Convert.ToInt32(displayTemp * 1.8 + 32);
+                }
+
+                string tooltipText = state.GetTooltipText(hardware, useFahrenheit);
+
+                tooltipText = tooltipText.TrimEnd('\n');
+                if (string.IsNullOrEmpty(tooltipText))
+                {
+                    tooltipText = $"StarTray ({type})";
+                }
+
+                if (tooltipText.Length > 63) tooltipText = tooltipText.Substring(0, 63);
+
+                if (state.NotifyIcon.Text != tooltipText)
+                {
+                    state.NotifyIcon.Text = tooltipText;
+                }
+
+                if (tempChanged || state.NotifyIcon.Icon == null)
+                {
+                    Icon oldIcon = state.NotifyIcon.Icon;
+                    state.NotifyIcon.Icon = state.CreateIcon(displayTemp, this);
+
+                    if (oldIcon != null)
                     {
-                        object registryValueObject = key.GetValue("SystemUsesLightTheme");
-                        if (registryValueObject != null)
-                        {
-                            int registryValue = (int)registryValueObject;
-                            return registryValue == 1;
-                        }
+                        DynamicIconRenderer.DisposeIcon(oldIcon);
                     }
                 }
             }
-            catch
-            {
-            }
-
-            return false;
+            catch { }
         }
 
-        private static class NativeMethods // Used for clearing up GDI's and User's icon handles
+        internal void ApplyTheme(string type, string theme)
         {
-            [DllImport("user32.dll", CharSet = CharSet.Auto)]
-            public static extern bool DestroyIcon(IntPtr handle);
+            if (!ActiveSensors.ContainsKey(type)) return;
+            var state = ActiveSensors[type];
+
+            SetColorsFromTheme(state, theme);
+
+            Icon oldIcon = state.NotifyIcon.Icon;
+            state.NotifyIcon.Icon = state.CreateIcon(state.CurrentTemp, this);
+
+            if (oldIcon != null)
+            {
+                DynamicIconRenderer.DisposeIcon(oldIcon);
+            }
+            SaveSettings_Sensor(type);
+        }
+
+        private void SetColorsFromTheme(HardwareSensor state, string themeId)
+        {
+            Theme theme = ThemeManager.GetThemeById(themeId);
+            try
+            {
+                state.IconColorStart = theme.GetColor1();
+                state.IconColorEnd = theme.GetColor2();
+                state.TextColor = theme.GetTextColor();
+            }
+            catch
+            {
+                // Fallback
+                state.IconColorStart = Color.White;
+                state.IconColorEnd = Color.White;
+                state.TextColor = Color.White;
+            }
+        }
+
+        private void SaveSettings_Sensor(string type)
+        {
+            var state = ActiveSensors[type];
+            if (type == "CPU")
+            {
+                Properties.Settings.Default.CPU_icon_color_1 = state.IconColorStart;
+                Properties.Settings.Default.CPU_icon_color_2 = state.IconColorEnd;
+                Properties.Settings.Default.CPU_text_color = state.TextColor;
+            }
+            else if (type == "GPU")
+            {
+                Properties.Settings.Default.GPU_icon_color_1 = state.IconColorStart;
+                Properties.Settings.Default.GPU_icon_color_2 = state.IconColorEnd;
+                Properties.Settings.Default.GPU_text_color = state.TextColor;
+            }
+            Properties.Settings.Default.Save();
+        }
+
+        private void LoadSettings_Sensor(string type)
+        {
+            var state = GetState(type);
+
+            string prefix = type.ToLower();
+            state.IconPath = Path.Combine(Application.StartupPath, "Resources", $"{prefix}icon.ico");
+
+            Color color1 = Color.White;
+            Color color2 = Color.White;
+            Color textCol = Color.White;
+
+            if (type == "CPU")
+            {
+                color1 = Properties.Settings.Default.CPU_icon_color_1;
+                color2 = Properties.Settings.Default.CPU_icon_color_2;
+                textCol = Properties.Settings.Default.CPU_text_color;
+            }
+            else if (type == "GPU")
+            {
+                color1 = Properties.Settings.Default.GPU_icon_color_1;
+                color2 = Properties.Settings.Default.GPU_icon_color_2;
+                textCol = Properties.Settings.Default.GPU_text_color;
+            }
+            
+
+            if (color1.A != 0)
+            {
+                state.IconColorStart = color1;
+                state.IconColorEnd = color2;
+                state.TextColor = textCol;
+            }
+            else // First boot (no saved settings)
+            {
+                if (IsWindowsThemeLight())
+                {
+                    SetColorsFromTheme(state, "dark");
+                }
+                else
+                {
+                    SetColorsFromTheme(state, "light");
+                }
+                SaveSettings_Sensor(type);
+            }
         }
     }
 }

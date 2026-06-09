@@ -5,12 +5,6 @@
     <Setting Name="UseFahrenheit" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
     </Setting>
-    <Setting Name="IconPath_CPU" Type="System.String" Scope="User">
-      <Value Profile="(Default)" />
-    </Setting>
-    <Setting Name="IconPath_GPU" Type="System.String" Scope="User">
-      <Value Profile="(Default)" />
-    </Setting>
     <Setting Name="showCPU" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">True</Value>
     </Setting>
@@ -50,16 +44,22 @@
     <Setting Name="GPU_HoverShowMemory" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
     </Setting>
-    <Setting Name="ColorMode_CPU" Type="System.String" Scope="User">
+    <Setting Name="CPU_icon_color_1" Type="System.Drawing.Color" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
-    <Setting Name="TextColor_CPU" Type="System.Drawing.Color" Scope="User">
+    <Setting Name="CPU_icon_color_2" Type="System.Drawing.Color" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
-    <Setting Name="ColorMode_GPU" Type="System.String" Scope="User">
+    <Setting Name="CPU_text_color" Type="System.Drawing.Color" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
-    <Setting Name="TextColor_GPU" Type="System.Drawing.Color" Scope="User">
+    <Setting Name="GPU_icon_color_1" Type="System.Drawing.Color" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="GPU_icon_color_2" Type="System.Drawing.Color" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="GPU_text_color" Type="System.Drawing.Color" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
   </Settings>
