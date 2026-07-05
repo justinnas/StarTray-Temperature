@@ -1,8 +1,6 @@
 using Microsoft.Win32.TaskScheduler;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Windows.Forms;
 
 namespace StarTrayTemperature
@@ -127,8 +125,13 @@ namespace StarTrayTemperature
 
         internal void ExitMenuItem_Click(object sender, EventArgs e)
         {
+            foreach (var type in ActiveSensors.Keys.ToList())
+            {
+                StopSensor(type);
+            }
+
+            computer?.Close();
             Application.Exit();
-            Close();
         }
     }
 }
