@@ -5,16 +5,16 @@
     <Setting Name="UseFahrenheit" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
     </Setting>
-    <Setting Name="showCPU" Type="System.Boolean" Scope="User">
+    <Setting Name="ShowCPU" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">True</Value>
     </Setting>
-    <Setting Name="showGPU" Type="System.Boolean" Scope="User">
+    <Setting Name="ShowGPU" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">True</Value>
     </Setting>
     <Setting Name="PawnIODeclined" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
     </Setting>
-    <Setting Name="SelectedGpuName" Type="System.String" Scope="User">
+    <Setting Name="GPU_SelectedName" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
     <Setting Name="CPU_HoverShowTemperature" Type="System.Boolean" Scope="User">
@@ -44,22 +44,22 @@
     <Setting Name="GPU_HoverShowMemory" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
     </Setting>
-    <Setting Name="CPU_icon_color_1" Type="System.Drawing.Color" Scope="User">
+    <Setting Name="CPU_IconColor1" Type="System.Drawing.Color" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
-    <Setting Name="CPU_icon_color_2" Type="System.Drawing.Color" Scope="User">
+    <Setting Name="CPU_IconColor2" Type="System.Drawing.Color" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
-    <Setting Name="CPU_text_color" Type="System.Drawing.Color" Scope="User">
+    <Setting Name="CPU_TextColor" Type="System.Drawing.Color" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
-    <Setting Name="GPU_icon_color_1" Type="System.Drawing.Color" Scope="User">
+    <Setting Name="GPU_IconColor1" Type="System.Drawing.Color" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
-    <Setting Name="GPU_icon_color_2" Type="System.Drawing.Color" Scope="User">
+    <Setting Name="GPU_IconColor2" Type="System.Drawing.Color" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
-    <Setting Name="GPU_text_color" Type="System.Drawing.Color" Scope="User">
+    <Setting Name="GPU_TextColor" Type="System.Drawing.Color" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
   </Settings>

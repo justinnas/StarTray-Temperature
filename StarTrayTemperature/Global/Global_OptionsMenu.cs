@@ -10,8 +10,8 @@ namespace StarTrayTemperature
         private void LoadGlobalSettings()
         {
             useFahrenheit = Properties.Settings.Default.UseFahrenheit;
-            showCPU = Properties.Settings.Default.showCPU;
-            showGPU = Properties.Settings.Default.showGPU;
+            showCPU = Properties.Settings.Default.ShowCPU;
+            showGPU = Properties.Settings.Default.ShowGPU;
         }
 
         internal void ToggleGPU(object sender, EventArgs e)
@@ -32,7 +32,7 @@ namespace StarTrayTemperature
             }
 
             GC.Collect();
-            Properties.Settings.Default.showGPU = showGPU;
+            Properties.Settings.Default.ShowGPU = showGPU;
             Properties.Settings.Default.Save();
         }
 
@@ -54,7 +54,7 @@ namespace StarTrayTemperature
             }
 
             GC.Collect();
-            Properties.Settings.Default.showCPU = showCPU;
+            Properties.Settings.Default.ShowCPU = showCPU;
             Properties.Settings.Default.Save();
         }
 

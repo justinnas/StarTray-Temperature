@@ -52,9 +52,9 @@ namespace StarTrayTemperature
 
                 for (int i = 0; i < bytes; i += 4)
                 {
-                    // The base icons are white shapes with anti-aliased transparency.
+                    // The base icons are white shapes with anti-aliased transparency
                     // We use the mask's alpha, and scale it by its brightness (R channel)
-                    // to handle any dark/grey pixels gracefully.
+                    // to handle any dark/grey pixels gracefully
                     float brightness = maskBytes[i + 2] / 255f;
                     byte alpha = (byte)(maskBytes[i + 3] * brightness);
 
@@ -96,7 +96,7 @@ namespace StarTrayTemperature
                 }
 
                 // GetHicon() creates an unmanaged Win32 icon handle.
-                // The caller is responsible for calling DisposeIcon() on it.
+                // The caller is responsible for calling DisposeIcon() on it
                 IntPtr hIcon = bitmap.GetHicon();
                 return Icon.FromHandle(hIcon);
             }

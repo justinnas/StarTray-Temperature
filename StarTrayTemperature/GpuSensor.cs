@@ -11,7 +11,7 @@ namespace StarTrayTemperature
 
         public override void FindSensor(Computer computer)
         {
-            string targetGpu = Properties.Settings.Default.SelectedGpuName;
+            string targetGpu = Properties.Settings.Default.GPU_SelectedName;
             int fallbackHardwareID = -1;
             int fallbackSensorID = -1;
 
@@ -77,7 +77,7 @@ namespace StarTrayTemperature
             if (gpus.Count > 0)
             {
                 information.MenuItems.Add(new MenuItem(gpus.Count > 1 ? "Target GPU:" : "Graphics card:") { Enabled = false });
-                string selectedGpu = Properties.Settings.Default.SelectedGpuName;
+                string selectedGpu = Properties.Settings.Default.GPU_SelectedName;
 
                 foreach (var gpu in gpus)
                 {
@@ -96,7 +96,7 @@ namespace StarTrayTemperature
                     {
                         gpuItem.Click += (s, e) =>
                         {
-                            Properties.Settings.Default.SelectedGpuName = gpu.Name;
+                            Properties.Settings.Default.GPU_SelectedName = gpu.Name;
                             Properties.Settings.Default.Save();
                             tray.RestartSensor("GPU");
                         };
@@ -182,7 +182,7 @@ namespace StarTrayTemperature
                         cpu.ShowGPUMenuItem.Text = "Show GPU icon (disabled)";
                     }
                 }
-                Properties.Settings.Default.showGPU = false;
+                Properties.Settings.Default.ShowGPU = false;
                 Properties.Settings.Default.Save();
             }
         }

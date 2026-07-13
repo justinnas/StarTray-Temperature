@@ -13,7 +13,7 @@ namespace StarTrayTemperature
             "StarTray",
             "error.log");
 
-        // Something the app cannot recover from: tell the user, then close.
+        // Something the app cannot recover from: tell the user, then close
         public static void HandleFatal(Exception ex)
         {
             Log(ex);
@@ -21,7 +21,7 @@ namespace StarTrayTemperature
             Environment.Exit(1);
         }
 
-        // Something went wrong but the app can keep running (e.g. a menu action).
+        // Something went wrong but the app can keep running (e.g. a menu action)
         public static void HandleNonFatal(Exception ex)
         {
             Log(ex);
@@ -65,7 +65,7 @@ namespace StarTrayTemperature
             }
             catch
             {
-                // Never let logging cause another error.
+                // Ignore logging errors
             }
         }
     }

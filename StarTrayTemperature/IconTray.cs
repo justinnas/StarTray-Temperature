@@ -31,7 +31,7 @@ namespace StarTrayTemperature
             if (state.HardwareID == -1 || state.SensorID == -1)
             {
                 state.HandleMissingSensor(this);
-                if (!ActiveSensors.ContainsKey(type)) return; // If HandleMissingSensor didn't throw, it might mean we just gracefully cancel start.
+                if (!ActiveSensors.ContainsKey(type)) return; // If HandleMissingSensor didn't throw, it might mean we just gracefully cancel start
                 if (state.HardwareID == -1 || state.SensorID == -1) return; // double check it didn't find something or is meant to abort
             }
 
@@ -177,15 +177,15 @@ namespace StarTrayTemperature
             var state = ActiveSensors[type];
             if (type == "CPU")
             {
-                Properties.Settings.Default.CPU_icon_color_1 = state.IconColorStart;
-                Properties.Settings.Default.CPU_icon_color_2 = state.IconColorEnd;
-                Properties.Settings.Default.CPU_text_color = state.TextColor;
+                Properties.Settings.Default.CPU_IconColor1 = state.IconColorStart;
+                Properties.Settings.Default.CPU_IconColor2 = state.IconColorEnd;
+                Properties.Settings.Default.CPU_TextColor = state.TextColor;
             }
             else if (type == "GPU")
             {
-                Properties.Settings.Default.GPU_icon_color_1 = state.IconColorStart;
-                Properties.Settings.Default.GPU_icon_color_2 = state.IconColorEnd;
-                Properties.Settings.Default.GPU_text_color = state.TextColor;
+                Properties.Settings.Default.GPU_IconColor1 = state.IconColorStart;
+                Properties.Settings.Default.GPU_IconColor2 = state.IconColorEnd;
+                Properties.Settings.Default.GPU_TextColor = state.TextColor;
             }
             Properties.Settings.Default.Save();
         }
@@ -203,15 +203,15 @@ namespace StarTrayTemperature
 
             if (type == "CPU")
             {
-                color1 = Properties.Settings.Default.CPU_icon_color_1;
-                color2 = Properties.Settings.Default.CPU_icon_color_2;
-                textCol = Properties.Settings.Default.CPU_text_color;
+                color1 = Properties.Settings.Default.CPU_IconColor1;
+                color2 = Properties.Settings.Default.CPU_IconColor2;
+                textCol = Properties.Settings.Default.CPU_TextColor;
             }
             else if (type == "GPU")
             {
-                color1 = Properties.Settings.Default.GPU_icon_color_1;
-                color2 = Properties.Settings.Default.GPU_icon_color_2;
-                textCol = Properties.Settings.Default.GPU_text_color;
+                color1 = Properties.Settings.Default.GPU_IconColor1;
+                color2 = Properties.Settings.Default.GPU_IconColor2;
+                textCol = Properties.Settings.Default.GPU_TextColor;
             }
             
 
