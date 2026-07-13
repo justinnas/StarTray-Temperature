@@ -56,6 +56,18 @@ namespace StarTrayTemperature
             ContextMenu.MenuItems.Add(new MenuItem($"{tray.AppLabel} ({Type})") { Enabled = false });
             ContextMenu.MenuItems.Add("-");
 
+            // +=-======+========-+==========--=+
+            // PawnIO installer
+            // +-===+====================--==+
+            if (!PawnIOManager.IsPawnIoInstalled())
+            {
+                MenuItem installPawnIO = new MenuItem("Install PawnIO Driver");
+                installPawnIO.Click += (s, e) => {
+                    PawnIOManager.PromptAndInstallPawnIO(true);
+                };
+                ContextMenu.MenuItems.Add(installPawnIO);
+                ContextMenu.MenuItems.Add("-");
+            }
 
             // +=-=========+====================--=+
             // Theme options
@@ -135,7 +147,7 @@ namespace StarTrayTemperature
         {
             string temperatureText = temperature.ToString();
             bool highTemp = temperature >= 100;
-            int fontSize = highTemp ? 14 : 18;
+            int fontSize = highTemp ? 15 : 18;
             int moveX = GetIconOffsetX(highTemp);
             int moveY = GetIconOffsetY(highTemp);
 

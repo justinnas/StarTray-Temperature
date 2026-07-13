@@ -20,7 +20,7 @@ namespace StarTrayTemperature
             if (!isUserInitiated && Properties.Settings.Default.PawnIODeclined)
                 return;
 
-            DialogResult result = MessageBox.Show("PawnIO driver is not installed. It is required to read CPU temperatures.\n\nDo you want to install it now?", "StarTray", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+            DialogResult result = MessageBox.Show("PawnIO driver is not installed. It is required to read CPU temperatures.\n\nDo you want to install it now?\n\nPawnIO is a third-party open-source driver, learn more at: https://pawnio.eu/", "StarTray", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
             if (result == DialogResult.Yes)
             {
                 InstallPawnIO();
@@ -30,7 +30,6 @@ namespace StarTrayTemperature
                     Properties.Settings.Default.PawnIODeclined = false;
                     Properties.Settings.Default.Save();
 
-                    MessageBox.Show("Installation complete. The application will now restart.", "StarTray", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     Application.Restart();
                     Environment.Exit(0);
                 }
@@ -69,20 +68,25 @@ namespace StarTrayTemperature
         private static void InstallPawnIO()
         {
             string path = ExtractPawnIO();
-            if (!string.IsNullOrEmpty(path))
+            if (string.IsNullOrEmpty(path))
+            {
+                MessageBox.Show("Could not run PawnIO_setup.exe. Please try again or download and install it manually.", "StarTray", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            try
             {
                 var process = Process.Start(new ProcessStartInfo(path, "-install") { Verb = "runas" });
                 process?.WaitForExit();
-
-                try
-                {
-                    File.Delete(path);
-                }
-                catch { }
             }
-            else
+            catch (System.ComponentModel.Win32Exception)
             {
-                MessageBox.Show("Could not run PawnIO_setup.exe. Please try again or download and install it manually.", "Extraction Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                // The user dismissed the Windows admin (UAC) prompt
+                MessageBox.Show("PawnIO installation was cancelled.", "StarTray", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            finally
+            {
+                try { File.Delete(path); } catch { }
             }
         }
 

@@ -187,7 +187,7 @@ namespace StarTrayTemperature
             }
         }
 
-        protected override int GetIconOffsetX(bool highTemp) => highTemp ? 2 : 3;
+        protected override int GetIconOffsetX(bool highTemp) => highTemp ? 3 : 3;
         
         protected override int GetIconOffsetY(bool highTemp) => highTemp ? 1 : 0;
 

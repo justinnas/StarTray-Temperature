@@ -101,12 +101,6 @@ namespace StarTrayTemperature
 
                 bool tempChanged = newTemp != state.CurrentTemp;
                 state.CurrentTemp = newTemp;
-                int displayTemp = state.CurrentTemp;
-
-                if (useFahrenheit)
-                {
-                    displayTemp = Convert.ToInt32(displayTemp * 1.8 + 32);
-                }
 
                 string tooltipText = state.GetTooltipText(hardware, useFahrenheit);
 
@@ -125,13 +119,7 @@ namespace StarTrayTemperature
 
                 if (tempChanged || state.NotifyIcon.Icon == null)
                 {
-                    Icon oldIcon = state.NotifyIcon.Icon;
-                    state.NotifyIcon.Icon = state.CreateIcon(displayTemp, this);
-
-                    if (oldIcon != null)
-                    {
-                        DynamicIconRenderer.DisposeIcon(oldIcon);
-                    }
+                    RefreshIcon(state);
                 }
             }
             catch { }
@@ -143,15 +131,27 @@ namespace StarTrayTemperature
             var state = ActiveSensors[type];
 
             SetColorsFromTheme(state, theme);
+            RefreshIcon(state);
+            SaveSettings_Sensor(type);
+        }
+
+        internal void RefreshIcon(HardwareSensor state)
+        {
+            if (state.NotifyIcon == null) return;
+
+            int displayTemp = state.CurrentTemp;
+            if (useFahrenheit)
+            {
+                displayTemp = Convert.ToInt32(displayTemp * 1.8 + 32);
+            }
 
             Icon oldIcon = state.NotifyIcon.Icon;
-            state.NotifyIcon.Icon = state.CreateIcon(state.CurrentTemp, this);
+            state.NotifyIcon.Icon = state.CreateIcon(displayTemp, this);
 
             if (oldIcon != null)
             {
                 DynamicIconRenderer.DisposeIcon(oldIcon);
             }
-            SaveSettings_Sensor(type);
         }
 
         private void SetColorsFromTheme(HardwareSensor state, string themeId)

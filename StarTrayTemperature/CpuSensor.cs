@@ -87,12 +87,12 @@ namespace StarTrayTemperature
 
         public override void HandleMissingSensor(IconTray tray)
         {
-            throw new Exception("CPU Sensors could not be found. Make sure you have administrator rights!");
+            throw new StarTrayException("CPU temperature sensors could not be found.\n\nMake sure you are running StarTray with administrator rights.");
         }
 
-        protected override int GetIconOffsetX(bool highTemp) => highTemp ? 0 : 1;
+        protected override int GetIconOffsetX(bool highTemp) => highTemp ? 1 : 1;
         
-        protected override int GetIconOffsetY(bool highTemp) => highTemp ? 2 : 0;
+        protected override int GetIconOffsetY(bool highTemp) => highTemp ? 1 : 1;
 
         private static string GetCpuName()
         {
@@ -149,17 +149,6 @@ namespace StarTrayTemperature
             hoverOptions.MenuItems.Add(showClock);
             
             ContextMenu.MenuItems.Add(hoverOptions);
-
-            if (!PawnIOManager.IsPawnIoInstalled())
-            {
-                ContextMenu.MenuItems.Add("-");
-                MenuItem installPawnIO = new MenuItem("Install PawnIO Driver");
-                installPawnIO.Click += (s, e) => {
-                    PawnIOManager.PromptAndInstallPawnIO(true);
-                };
-                ContextMenu.MenuItems.Add(installPawnIO);
-                ContextMenu.MenuItems.Add("-");
-            }
         }
     }
 }

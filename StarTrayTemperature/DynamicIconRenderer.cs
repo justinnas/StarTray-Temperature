@@ -15,6 +15,11 @@ namespace StarTrayTemperature
             Bitmap gradientBmp = new Bitmap(width, height, PixelFormat.Format32bppArgb);
             Bitmap maskBmp = new Bitmap(width, height, PixelFormat.Format32bppArgb);
 
+            // Pin to 96 DPI so point-sized fonts aren't scaled by the monitor's DPI
+            bitmap.SetResolution(96f, 96f);
+            gradientBmp.SetResolution(96f, 96f);
+            maskBmp.SetResolution(96f, 96f);
+
             BitmapData gradData = null, maskData = null, outData = null;
 
             try

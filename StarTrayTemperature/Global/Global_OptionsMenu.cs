@@ -117,6 +117,8 @@ namespace StarTrayTemperature
                 {
                     state.ChangeScaleMenuItem.Text = newText;
                 }
+
+                RefreshIcon(state);
             }
 
             Properties.Settings.Default.UseFahrenheit = useFahrenheit;
