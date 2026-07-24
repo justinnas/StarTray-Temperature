@@ -125,6 +125,21 @@ namespace StarTrayTemperature
             catch { }
         }
 
+        internal void ReloadThemes()
+        {
+            ThemeManager.LoadThemes();
+
+            foreach (var state in ActiveSensors.Values)
+            {
+                ContextMenu oldMenu = state.ContextMenu;
+
+                state.InitializeContextMenu(this);
+                state.NotifyIcon.ContextMenu = state.ContextMenu;
+
+                oldMenu?.Dispose();
+            }
+        }
+
         internal void ApplyTheme(string type, string theme)
         {
             if (!ActiveSensors.ContainsKey(type)) return;

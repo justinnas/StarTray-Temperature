@@ -84,6 +84,10 @@ namespace StarTrayTemperature
             }
 
             colorModes.MenuItems.Add("-");
+            MenuItem reloadThemes = new MenuItem("Reload themes");
+            reloadThemes.Click += (s, e) => tray.ReloadThemes();
+            colorModes.MenuItems.Add(reloadThemes);
+
             MenuItem openThemesDir = new MenuItem("Open Themes folder...");
             openThemesDir.Click += (s, e) => Process.Start("explorer.exe", ThemeManager.ThemesDirectory);
             colorModes.MenuItems.Add(openThemesDir);

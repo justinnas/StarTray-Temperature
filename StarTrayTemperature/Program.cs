@@ -1,4 +1,5 @@
 using System;
+using System.Diagnostics;
 using System.Windows.Forms;
 
 namespace StarTrayTemperature
@@ -8,6 +9,17 @@ namespace StarTrayTemperature
         [STAThread]
         static void Main()
         {
+            string currentProcessName = Process.GetCurrentProcess().ProcessName;
+
+            var runningProcesses = Process.GetProcessesByName(currentProcessName);
+
+            if (runningProcesses.Length > 1)
+            {
+                MessageBox.Show("StarTray is already running!\n\nDon't see the icon?\nTry clicking the upward arrow in the system tray to see if it's hidden.", "StarTray", MessageBoxButtons.OK);
+                Environment.Exit(0);
+                return;
+            }
+
             Application.SetUnhandledExceptionMode(UnhandledExceptionMode.CatchException);
             Application.ThreadException += (s, e) => ErrorHandler.HandleNonFatal(e.Exception);
             AppDomain.CurrentDomain.UnhandledException += (s, e) =>
