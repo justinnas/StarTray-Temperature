@@ -207,9 +207,9 @@
     <Content Include="Resources\gpuicon.ico">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <EmbeddedResource Include="Resources\PawnIO_setup.exe">
+    <Content Include="Resources\PawnIO_setup.exe">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </EmbeddedResource>
+    </Content>
     <Content Include="startray_icon.ico" />
   </ItemGroup>
   <ItemGroup />

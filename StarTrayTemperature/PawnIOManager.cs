@@ -67,10 +67,10 @@ namespace StarTrayTemperature
 
         private static void InstallPawnIO()
         {
-            string path = ExtractPawnIO();
-            if (string.IsNullOrEmpty(path))
+            string path = Path.Combine(Application.StartupPath, "Resources", "PawnIO_setup.exe");
+            if (!File.Exists(path))
             {
-                MessageBox.Show("Could not run PawnIO_setup.exe. Please try again or download and install it manually.", "StarTray", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Could not find PawnIO_setup.exe.\n\nReinstalling StarTray should fix this, or you can download and install PawnIO manually from https://pawnio.eu/", "StarTray", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
@@ -83,33 +83,6 @@ namespace StarTrayTemperature
             {
                 // The user dismissed the Windows admin (UAC) prompt
                 MessageBox.Show("PawnIO installation was cancelled.", "StarTray", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-            finally
-            {
-                try { File.Delete(path); } catch { }
-            }
-        }
-
-        private static string ExtractPawnIO()
-        {
-            string destination = Path.Combine(Application.StartupPath, "PawnIO_setup.exe");
-
-            try
-            {
-                using (Stream resourceStream = typeof(PawnIOManager).Assembly.GetManifestResourceStream("StarTrayTemperature.Resources.PawnIO_setup.exe"))
-                {
-                    if (resourceStream == null) return null;
-
-                    using (FileStream fileStream = new FileStream(destination, FileMode.Create, FileAccess.Write))
-                    {
-                        resourceStream.CopyTo(fileStream);
-                    }
-                }
-                return destination;
-            }
-            catch
-            {
-                return null;
             }
         }
     }

@@ -7,11 +7,13 @@ namespace StarTrayTemperature
     public static class ErrorHandler
     {
         private const string Title = "StarTray";
+        private const long MaxLogBytes = 1024 * 1024;
 
         private static string LogPath => Path.Combine(
             Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData),
+            "justinnas",
             "StarTray",
-            "error.log");
+            "errors.log");
 
         // Something the app cannot recover from: tell the user, then close
         public static void HandleFatal(Exception ex)
@@ -61,11 +63,22 @@ namespace StarTrayTemperature
             try
             {
                 Directory.CreateDirectory(Path.GetDirectoryName(LogPath));
+                TruncateIfFull();
                 File.AppendAllText(LogPath, $"[{DateTime.Now:yyyy-MM-dd HH:mm:ss}] {ex}\n\n");
             }
             catch
             {
                 // Ignore logging errors
+            }
+        }
+
+        // Start over once the log is full so a crash loop can't fill the disk
+        private static void TruncateIfFull()
+        {
+            FileInfo log = new FileInfo(LogPath);
+            if (log.Exists && log.Length >= MaxLogBytes)
+            {
+                File.Delete(LogPath);
             }
         }
     }
