@@ -33,7 +33,18 @@
     <PublishWizardCompleted>true</PublishWizardCompleted>
     <BootstrapperEnabled>true</BootstrapperEnabled>
     <BootstrapperComponentsLocation>Relative</BootstrapperComponentsLocation>
+    <!-- Don't copy the .xml docs and .pdb files of referenced libraries to the output -->
+    <AllowedReferenceRelatedFileExtensions>none</AllowedReferenceRelatedFileExtensions>
   </PropertyGroup>
+  <!-- Drop the localization folders of referenced libraries, then move the rest into Libraries\ -->
+  <Target Name="OrganiseReferences" AfterTargets="ResolveAssemblyReferences">
+    <ItemGroup>
+      <ReferenceCopyLocalPaths Remove="@(ReferenceCopyLocalPaths)" Condition="'%(ReferenceCopyLocalPaths.DestinationSubDirectory)' != ''" />
+      <ReferenceCopyLocalPaths>
+        <DestinationSubDirectory>Libraries\</DestinationSubDirectory>
+      </ReferenceCopyLocalPaths>
+    </ItemGroup>
+  </Target>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
@@ -141,17 +152,17 @@
     <Compile Include="Global\Global_OptionsMenu.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="HardwareSensor.cs" />
-    <Compile Include="ErrorHandler.cs" />
-    <Compile Include="StarTrayException.cs" />
-    <Compile Include="ThemeManager.cs" />
-    <Compile Include="CpuSensor.cs" />
-    <Compile Include="GpuSensor.cs" />
-    <Compile Include="DynamicIconRenderer.cs" />
+    <Compile Include="Sensors\HardwareSensor.cs" />
+    <Compile Include="Exceptions\ErrorHandler.cs" />
+    <Compile Include="Exceptions\StarTrayException.cs" />
+    <Compile Include="Render\ThemeManager.cs" />
+    <Compile Include="Sensors\CpuSensor.cs" />
+    <Compile Include="Sensors\GpuSensor.cs" />
+    <Compile Include="Render\DynamicIconRenderer.cs" />
     <Compile Include="IconTray.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="PawnIOManager.cs" />
+    <Compile Include="PawnIO\PawnIOManager.cs" />
     <Compile Include="InitIconTray.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -222,6 +233,36 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="LICENSE.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Licenses\BlackSharp.Core_License.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Licenses\DiskInfoToolkit_License.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Licenses\HidSharp_License.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Licenses\LibreHardwareMonitorLib_License.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Licenses\Microsoft_System_License.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Licenses\OpenSans_Font_License.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Licenses\PawnIO_License.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Licenses\RAMSPDToolkit-NDD_License.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Licenses\TaskScheduler_License.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Resources\cpuicon.ico">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
