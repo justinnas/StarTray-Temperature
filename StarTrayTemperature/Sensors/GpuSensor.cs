@@ -189,7 +189,7 @@ namespace StarTrayTemperature
 
         protected override int GetIconOffsetX(bool highTemp) => highTemp ? 3 : 3;
         
-        protected override int GetIconOffsetY(bool highTemp) => highTemp ? 1 : 0;
+        protected override int GetIconOffsetY(bool highTemp) => highTemp ? 1 : 1;
 
         public override void AddCustomMenuItems(IconTray tray)
         {
