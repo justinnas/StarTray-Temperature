@@ -92,10 +92,10 @@ If you prefer, you can review the source code and compile the application yourse
 
 ## License
 
-This project uses the following libraries: LibreHardwareMonitorLib (MPL 2.0 License), HidSharp (Apache License), 
-System.CodeDom (MIT License), System.Management (MIT License), TaskScheduler (MIT License).
-
-This project uses the Open Sans font, designed by Steve Matteson, licensed under SIL Open Font License, Version 1.1.
+This project uses the following libraries and tools: 
+LibreHardwareMonitorLib (MPL 2.0 License), HidSharp (Apache License), BlackSharp.Core (Mozilla Public License 2.0), 
+Various Microsoft system libraries (MIT License), TaskScheduler (MIT License), DiskInfoToolkit (Mozilla Public License 2.0),
+RAMSPDToolkit-NDD (Mozilla Public License 2.0), PawnIO (GPL-2.0 License), Open Sans font (SIL Open Font License 1.1). 
 
 Their respective license files can be found [here](https://github.com/justinnas/StarTray-Temperature/tree/main/Licenses).
 
