@@ -13,17 +13,15 @@
 
 <br>
 
-## 📌 Important
-
-StarTray relies on the [LibreHardwareMonitorLib](https://github.com/LibreHardwareMonitor/LibreHardwareMonitor), which uses WinRing0, to collect temperature data. Due to recent changes in Microsoft Defender, the WinRing0 driver (identified as **StarTray.sys** when used by StarTray) is now **flagged as vulnerable**. This change impacts many applications that depend on WinRing0. Please [read the official Microsoft's blog post before proceeding](https://support.microsoft.com/en-us/windows/microsoft-defender-antivirus-alert-vulnerabledriver-winnt-winring0-eb057830-d77b-41a2-9a34-015a5d203c42).
-
-Currently, there are no official releases of LibreHardwareMonitorLib that do not use WinRing0. Prerelease versions have switched to the PawnIO driver, and once a stable release is available, I will update StarTray accordingly.
-
-In the meantime, you can either follow the guidance provided in [Microsoft's blog post](https://support.microsoft.com/en-us/windows/microsoft-defender-antivirus-alert-vulnerabledriver-winnt-winring0-eb057830-d77b-41a2-9a34-015a5d203c42) or temporarily stop using StarTray if you are uncomfortable with the use of the WinRing0 driver. I apologize for the inconvenience.
+## Download
+<div>
+  <a href="https://github.com/justinnas/StarTray-Temperature/releases">
+    <img width="300" alt="Download StarTray Installer" src="https://github.com/user-attachments/assets/302db1ab-c445-4b4b-8e4d-5c1faf59d71f" />
+  </a>
+</div>
 
 <br>
-
-## Download
+<br>
 
 You can download the latest version of StarTray from [GitHub Releases](https://github.com/justinnas/StarTray-Temperature/releases). Scroll down to 'Assets' section and choose between the installer or the portable version based on your preference.
 
@@ -34,7 +32,6 @@ You can download the latest version of StarTray from [GitHub Releases](https://g
 <br>
 
 ## Screenshots
-***Icons can be customized through the themes menu.***
 <div display="flex">
 <img src="https://github.com/user-attachments/assets/76065f81-ba0a-40bd-9435-693942228ac4" height="100">
 <img src="https://github.com/user-attachments/assets/11d6266f-b3bb-4dfd-aaf0-54aa7db3aee8" height="100">
@@ -43,44 +40,6 @@ You can download the latest version of StarTray from [GitHub Releases](https://g
 <img src="https://github.com/user-attachments/assets/b2935b69-e9e1-41c4-99c4-7793dcb18788" height="100">
 <img src="https://github.com/user-attachments/assets/0bfddd1c-c068-4d33-982f-97c528865943" height="100">
 </div>
-
-<br>
-
-## Usage
-
-This application is very simple to use. After launching the application, you will see CPU and/or GPU icons in the system tray. 
-You can right-click one of these icons to open the menu panel. 
-Right-clicking GPU icon brings up GPU icon menu, right-clicking CPU icon brings up CPU icon menu.
-
-### Menu Panel
-
-**Theme** *(Specific to an icon)*
-
-- **Change Icon Theme:**
-    - Hover over the "Theme" tab.
-    - Select either "CPU theme" or "GPU theme" and click on the desired theme to change the icon's appearance.
-
-**Options** *(Global, applies to both icons)*
-
-- **Show/Hide Icons:**
-    - Hover over the "Options" tab.
-    - Select "Show GPU icon" or "Show CPU icon" to enable or disable the respective icon.
-- **Run on Startup:**
-    - Hover over the "Options" tab.
-    - Select "Run on Startup" to enable or disable the application’s ability to start when your system boots up.
-- **Change Temperature Units:**
-    - Hover over the "Options" tab.
-    - Choose "Change to Fahrenheit" or "Change to Celsius" to switch between temperature units.
-
-**Info** *(Specific to an icon)*
-
-- **View Hardware Info:**
-    - Hover over the "Info" tab to display your processor's or graphics card's name.
-
-**Exit** *(Global, applies to both icons)*
-
-- **Close the Application:**
-    - Click the "Exit" button to close StarTray.
 
 <br>
 
