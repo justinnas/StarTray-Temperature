@@ -16,7 +16,7 @@
 ## Download
 <div>
   <a href="https://github.com/justinnas/StarTray-Temperature/releases">
-    <img width="300" alt="Download StarTray Installer" src="https://github.com/user-attachments/assets/302db1ab-c445-4b4b-8e4d-5c1faf59d71f" />
+    <img width="300" alt="Download StarTray Installer" src="https://github.com/user-attachments/assets/488f996d-089a-441d-85ee-94e3f88b3108" />
   </a>
 </div>
 
@@ -31,7 +31,7 @@
 <br>
 <br>
 
-You can also download the latest version of StarTray from [GitHub Releases](https://github.com/justinnas/StarTray-Temperature/releases). Scroll down to **Assets*** section and choose between the installer or the portable version based on your preference.
+You can also download the latest version of StarTray from [GitHub Releases](https://github.com/justinnas/StarTray-Temperature/releases). Scroll down to **Assets** section and choose between the installer or the portable version based on your preference.
 
 <br>
 
