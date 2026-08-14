@@ -21,9 +21,17 @@
 </div>
 
 <br>
+
+<div>
+  <a href="https://github.com/justinnas/StarTray-Temperature/blob/main/GUIDE.md">
+    <img width="250" alt="StarTray Guide" src="https://github.com/user-attachments/assets/2d02394c-4612-4ba5-9102-c2849981e673" />
+  </a>
+</div>
+
+<br>
 <br>
 
-You can download the latest version of StarTray from [GitHub Releases](https://github.com/justinnas/StarTray-Temperature/releases). Scroll down to 'Assets' section and choose between the installer or the portable version based on your preference.
+You can also download the latest version of StarTray from [GitHub Releases](https://github.com/justinnas/StarTray-Temperature/releases). Scroll down to **Assets*** section and choose between the installer or the portable version based on your preference.
 
 <br>
 
@@ -40,12 +48,6 @@ You can download the latest version of StarTray from [GitHub Releases](https://g
 <img src="https://github.com/user-attachments/assets/b2935b69-e9e1-41c4-99c4-7793dcb18788" height="100">
 <img src="https://github.com/user-attachments/assets/0bfddd1c-c068-4d33-982f-97c528865943" height="100">
 </div>
-
-<br>
-
-## Source Code
-
-If you prefer, you can review the source code and compile the application yourself. After compiling the application, copy the 'Resources' and 'Licenses' folders and their contents to the same directory as the compiled .exe file.
 
 <br>
 
