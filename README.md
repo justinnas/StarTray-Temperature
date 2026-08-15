@@ -13,23 +13,25 @@
 
 <br>
 
-## 📌 Important
-
-2026 June Update: The team behind LibreHardwareMonitorLib had made significant changes! Currently working on a new version of StarTray powered by PawnIO which will completely replace WinRing0 and fix antivirus issues. It will also include new quality of life updates. Stay tuned! 
-
-P.S. [StarTray Battery](https://github.com/justinnas/StarTray-Battery) is not affected by WinRing0 issues as it uses a custom independent solution.
-
-~~StarTray relies on the [LibreHardwareMonitorLib](https://github.com/LibreHardwareMonitor/LibreHardwareMonitor), which uses WinRing0, to collect temperature data. Due to recent changes in Microsoft Defender, the WinRing0 driver (identified as **StarTray.sys** when used by StarTray) is now **flagged as vulnerable**. This change impacts many applications that depend on WinRing0. Please [read the official Microsoft's blog post before proceeding](https://support.microsoft.com/en-us/windows/microsoft-defender-antivirus-alert-vulnerabledriver-winnt-winring0-eb057830-d77b-41a2-9a34-015a5d203c42).~~
-
-~~Currently, there are no official releases of LibreHardwareMonitorLib that do not use WinRing0. Prerelease versions have switched to the PawnIO driver, and once a stable release is available, I will update StarTray accordingly.~~
-
-~~In the meantime, you can either follow the guidance provided in [Microsoft's blog post](https://support.microsoft.com/en-us/windows/microsoft-defender-antivirus-alert-vulnerabledriver-winnt-winring0-eb057830-d77b-41a2-9a34-015a5d203c42) or temporarily stop using StarTray if you are uncomfortable with the use of the WinRing0 driver. I apologize for the inconvenience.~~
+## Download
+<div>
+  <a href="https://github.com/justinnas/StarTray-Temperature/releases">
+    <img width="300" alt="Download StarTray Installer" src="https://github.com/user-attachments/assets/488f996d-089a-441d-85ee-94e3f88b3108" />
+  </a>
+</div>
 
 <br>
 
-## Download
+<div>
+  <a href="https://github.com/justinnas/StarTray-Temperature/blob/main/GUIDE.md">
+    <img width="250" alt="StarTray Guide" src="https://github.com/user-attachments/assets/2d02394c-4612-4ba5-9102-c2849981e673" />
+  </a>
+</div>
 
-You can download the latest version of StarTray from [GitHub Releases](https://github.com/justinnas/StarTray-Temperature/releases). Scroll down to 'Assets' section and choose between the installer or the portable version based on your preference.
+<br>
+<br>
+
+You can also download the latest version of StarTray from [GitHub Releases](https://github.com/justinnas/StarTray-Temperature/releases). Scroll down to **Assets** section and choose between the installer or the portable version based on your preference.
 
 <br>
 
@@ -38,7 +40,6 @@ You can download the latest version of StarTray from [GitHub Releases](https://g
 <br>
 
 ## Screenshots
-***Icons can be customized through the themes menu.***
 <div display="flex">
 <img src="https://github.com/user-attachments/assets/76065f81-ba0a-40bd-9435-693942228ac4" height="100">
 <img src="https://github.com/user-attachments/assets/11d6266f-b3bb-4dfd-aaf0-54aa7db3aee8" height="100">
@@ -50,56 +51,12 @@ You can download the latest version of StarTray from [GitHub Releases](https://g
 
 <br>
 
-## Usage
-
-This application is very simple to use. After launching the application, you will see CPU and/or GPU icons in the system tray. 
-You can right-click one of these icons to open the menu panel. 
-Right-clicking GPU icon brings up GPU icon menu, right-clicking CPU icon brings up CPU icon menu.
-
-### Menu Panel
-
-**Theme** *(Specific to an icon)*
-
-- **Change Icon Theme:**
-    - Hover over the "Theme" tab.
-    - Select either "CPU theme" or "GPU theme" and click on the desired theme to change the icon's appearance.
-
-**Options** *(Global, applies to both icons)*
-
-- **Show/Hide Icons:**
-    - Hover over the "Options" tab.
-    - Select "Show GPU icon" or "Show CPU icon" to enable or disable the respective icon.
-- **Run on Startup:**
-    - Hover over the "Options" tab.
-    - Select "Run on Startup" to enable or disable the application’s ability to start when your system boots up.
-- **Change Temperature Units:**
-    - Hover over the "Options" tab.
-    - Choose "Change to Fahrenheit" or "Change to Celsius" to switch between temperature units.
-
-**Info** *(Specific to an icon)*
-
-- **View Hardware Info:**
-    - Hover over the "Info" tab to display your processor's or graphics card's name.
-
-**Exit** *(Global, applies to both icons)*
-
-- **Close the Application:**
-    - Click the "Exit" button to close StarTray.
-
-<br>
-
-## Source Code
-
-If you prefer, you can review the source code and compile the application yourself. After compiling the application, copy the 'Resources' and 'Licenses' folders and their contents to the same directory as the compiled .exe file.
-
-<br>
-
 ## License
 
-This project uses the following libraries: LibreHardwareMonitorLib (MPL 2.0 License), HidSharp (Apache License), 
-System.CodeDom (MIT License), System.Management (MIT License), TaskScheduler (MIT License).
-
-This project uses the Open Sans font, designed by Steve Matteson, licensed under SIL Open Font License, Version 1.1.
+This project uses the following libraries and tools: 
+LibreHardwareMonitorLib (MPL 2.0 License), HidSharp (Apache License), BlackSharp.Core (Mozilla Public License 2.0), 
+Various Microsoft system libraries (MIT License), TaskScheduler (MIT License), DiskInfoToolkit (Mozilla Public License 2.0),
+RAMSPDToolkit-NDD (Mozilla Public License 2.0), PawnIO (GPL-2.0 License), Open Sans font (SIL Open Font License 1.1). 
 
 Their respective license files can be found [here](https://github.com/justinnas/StarTray-Temperature/tree/main/Licenses).
 
