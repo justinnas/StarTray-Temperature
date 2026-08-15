@@ -15,7 +15,7 @@
 
 ## Download
 <div>
-  <a href="https://github.com/justinnas/StarTray-Temperature/releases">
+  <a href="https://github.com/justinnas/StarTray-Temperature/releases/download/v1.2/StarTray-Setup.exe">
     <img width="300" alt="Download StarTray Installer" src="https://github.com/user-attachments/assets/488f996d-089a-441d-85ee-94e3f88b3108" />
   </a>
 </div>
@@ -58,7 +58,7 @@ LibreHardwareMonitorLib (MPL 2.0 License), HidSharp (Apache License), BlackSharp
 Various Microsoft system libraries (MIT License), TaskScheduler (MIT License), DiskInfoToolkit (Mozilla Public License 2.0),
 RAMSPDToolkit-NDD (Mozilla Public License 2.0), PawnIO (GPL-2.0 License), Open Sans font (SIL Open Font License 1.1). 
 
-Their respective license files can be found [here](https://github.com/justinnas/StarTray-Temperature/tree/main/Licenses).
+Their respective license files can be found [here](https://github.com/justinnas/StarTray-Temperature/tree/main/StarTrayTemperature/Licenses).
 
 StarTray is licensed under GNU General Public License v3.0 license, please see the [license file](https://github.com/justinnas/StarTray-Temperature/blob/main/LICENSE.txt) for more details.
 
