@@ -1,6 +1,6 @@
 <div align="center">
   <a href="https://github.com/justinnas/StarTray-Temperature/releases#gh-light-mode-only">
-    <img height="170" alt="Startray" src="https://github.com/user-attachments/assets/eca2fa0a-28d8-4d65-85cb-f80f73d1fab2" />
+    <img height="170" alt="Startray" src="https://github.com/user-attachments/assets/cd428d70-f439-409c-a7c2-f189521355b1" />
   </a>
 </div>
 
