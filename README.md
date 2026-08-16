@@ -1,12 +1,12 @@
 <div align="center">
   <a href="https://github.com/justinnas/StarTray-Temperature/releases#gh-light-mode-only">
-    <img height="170" alt="Startray" src="https://github.com/user-attachments/assets/cd428d70-f439-409c-a7c2-f189521355b1" />
+    <img height="170" alt="StarTray" src="https://github.com/user-attachments/assets/cd428d70-f439-409c-a7c2-f189521355b1" />
   </a>
 </div>
 
 <div align="center">
   <a href="https://github.com/justinnas/StarTray-Temperature/releases#gh-dark-mode-only">
-    <img height="170" alt="Startray" src="https://github.com/user-attachments/assets/c229e124-fd26-43d7-aef0-cb3ebc57050d" />
+    <img height="170" alt="StarTray" src="https://github.com/user-attachments/assets/c229e124-fd26-43d7-aef0-cb3ebc57050d" />
   </a>
 </div>
 
@@ -22,7 +22,9 @@
 <br>
 
 <div display="flex">
-  <img width="1200" height="485" alt="startray_promo" src="https://github.com/user-attachments/assets/ed0b2a44-e9c7-4299-8738-761d3d60d383" />
+  <a href="https://github.com/justinnas/StarTray-Temperature/releases">
+    <img width="1200" height="485" alt="StarTray Splash Screen" src="https://github.com/user-attachments/assets/ed0b2a44-e9c7-4299-8738-761d3d60d383" />
+  </a>
 </div>
 
 <br>
