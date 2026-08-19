@@ -46,6 +46,10 @@ You can download the latest version of StarTray from [GitHub Releases](https://g
 
 <br>
 
+Also, any [issue reports](https://github.com/justinnas/StarTray-Temperature/issues) and [discussions](https://github.com/justinnas/StarTray-Temperature/discussions) are always welcomed!
+
+<br>
+
 ## License
 
 This project uses the following libraries and tools: 
