@@ -86,13 +86,7 @@ namespace StarTrayTemperature
 
             if (gpus.Count > 0)
             {
-                List<IHardware> selectable = new List<IHardware>();
-                foreach (var gpu in gpus)
-                {
-                    if (FindTemperatureSensor(gpu) != -1) selectable.Add(gpu);
-                }
-
-                information.MenuItems.Add(new MenuItem(selectable.Count > 1 ? "Target GPU:" : "Graphics card:") { Enabled = false });
+                information.MenuItems.Add(new MenuItem(gpus.Count > 1 ? "Target GPU:" : "Graphics card:") { Enabled = false });
 
                 foreach (var gpu in gpus)
                 {
@@ -103,7 +97,7 @@ namespace StarTrayTemperature
                         gpuItem.Checked = true;
                     }
 
-                    if (selectable.Count > 1 && selectable.Contains(gpu))
+                    if (gpus.Count > 1 && FindTemperatureSensor(gpu) != -1)
                     {
                         gpuItem.Click += (s, e) =>
                         {
