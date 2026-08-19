@@ -12,50 +12,60 @@ namespace StarTrayTemperature
         public override void FindSensor(Computer computer)
         {
             string targetGpu = Properties.Settings.Default.GPU_SelectedName;
-            int fallbackHardwareID = -1;
-            int fallbackSensorID = -1;
+            int firstHardwareID = -1;
+            int firstSensorID = -1;
 
             for (int i = 0; i < computer.Hardware.Count; i++)
             {
                 var hardware = computer.Hardware[i];
-                if (hardware.HardwareType == HardwareType.GpuNvidia || hardware.HardwareType == HardwareType.GpuAmd || hardware.HardwareType == HardwareType.GpuIntel)
+                if (!IsGpu(hardware)) continue;
+
+                hardware.Update();
+
+                int sensorID = FindTemperatureSensor(hardware);
+                if (sensorID == -1) continue;
+
+                if (firstHardwareID == -1)
                 {
-                    hardware.Update();
-                    for (int j = 0; j < hardware.Sensors.Length; j++)
-                    {
-                        var sensor = hardware.Sensors[j];
-                        if (sensor != null && sensor.SensorType == SensorType.Temperature && sensor.Name == "GPU Core")
-                        {
-                            if (fallbackHardwareID == -1)
-                            {
-                                fallbackHardwareID = i;
-                                fallbackSensorID = j;
-                            }
+                    firstHardwareID = i;
+                    firstSensorID = sensorID;
+                }
 
-                            if (string.IsNullOrEmpty(targetGpu))
-                            {
-                                HardwareID = i;
-                                SensorID = j;
-                                return;
-                            }
-
-                            if (hardware.Name == targetGpu)
-                            {
-                                HardwareID = i;
-                                SensorID = j;
-                                return;
-                            }
-                            break;
-                        }
-                    }
+                if (hardware.Name == targetGpu)
+                {
+                    HardwareID = i;
+                    SensorID = sensorID;
+                    return;
                 }
             }
 
-            if (fallbackHardwareID != -1)
+            if (firstHardwareID != -1)
             {
-                HardwareID = fallbackHardwareID;
-                SensorID = fallbackSensorID;
+                HardwareID = firstHardwareID;
+                SensorID = firstSensorID;
             }
+        }
+
+        private static bool IsGpu(IHardware hardware)
+        {
+            return hardware.HardwareType == HardwareType.GpuNvidia || hardware.HardwareType == HardwareType.GpuAmd || hardware.HardwareType == HardwareType.GpuIntel;
+        }
+
+        // "GPU Core" is preferred, but some integrated GPUs never expose it and only report something like "GPU VR SoC"
+        private static int FindTemperatureSensor(IHardware hardware)
+        {
+            int firstTemperature = -1;
+
+            for (int j = 0; j < hardware.Sensors.Length; j++)
+            {
+                var sensor = hardware.Sensors[j];
+                if (sensor == null || sensor.SensorType != SensorType.Temperature) continue;
+
+                if (sensor.Name == "GPU Core") return j;
+                if (firstTemperature == -1) firstTemperature = j;
+            }
+
+            return firstTemperature;
         }
 
         public override void InitializeContextMenu(IconTray tray)
@@ -66,33 +76,28 @@ namespace StarTrayTemperature
         public override void AddInfoMenuHardware(IconTray tray, MenuItem information)
         {
             List<IHardware> gpus = new List<IHardware>();
-            foreach (var hw in tray.computer.Hardware)
+            foreach (var compHardware in tray.computer.Hardware)
             {
-                if (hw.HardwareType == HardwareType.GpuNvidia || hw.HardwareType == HardwareType.GpuAmd || hw.HardwareType == HardwareType.GpuIntel)
+                if (IsGpu(compHardware))
                 {
-                    gpus.Add(hw);
+                    gpus.Add(compHardware);
                 }
             }
 
             if (gpus.Count > 0)
             {
                 information.MenuItems.Add(new MenuItem(gpus.Count > 1 ? "Target GPU:" : "Graphics card:") { Enabled = false });
-                string selectedGpu = Properties.Settings.Default.GPU_SelectedName;
 
                 foreach (var gpu in gpus)
                 {
                     MenuItem gpuItem = new MenuItem(gpu.Name);
-                    
-                    if (string.IsNullOrEmpty(selectedGpu) && HardwareID != -1 && tray.computer.Hardware[HardwareID] == gpu)
-                    {
-                        gpuItem.Checked = true;
-                    }
-                    else if (gpu.Name == selectedGpu)
+
+                    if (HardwareID != -1 && tray.computer.Hardware[HardwareID] == gpu)
                     {
                         gpuItem.Checked = true;
                     }
 
-                    if (gpus.Count > 1)
+                    if (gpus.Count > 1 && FindTemperatureSensor(gpu) != -1)
                     {
                         gpuItem.Click += (s, e) =>
                         {
@@ -171,20 +176,20 @@ namespace StarTrayTemperature
         public override void HandleMissingSensor(IconTray tray)
         {
             tray.showGPU = false;
-            if (tray.showCPU)
+            tray.ActiveSensors.Remove(Type);
+
+            if (tray.ActiveSensors.TryGetValue("CPU", out var cpu))
             {
-                if (tray.ActiveSensors.TryGetValue("CPU", out var cpu))
+                if (cpu.ShowGPUMenuItem != null)
                 {
-                    if (cpu.ShowGPUMenuItem != null)
-                    {
-                        cpu.ShowGPUMenuItem.Enabled = false;
-                        cpu.ShowGPUMenuItem.Checked = false;
-                        cpu.ShowGPUMenuItem.Text = "Show GPU icon (disabled)";
-                    }
+                    cpu.ShowGPUMenuItem.Enabled = false;
+                    cpu.ShowGPUMenuItem.Checked = false;
+                    cpu.ShowGPUMenuItem.Text = "Show GPU icon (disabled)";
                 }
-                Properties.Settings.Default.ShowGPU = false;
-                Properties.Settings.Default.Save();
             }
+
+            Properties.Settings.Default.ShowGPU = false;
+            Properties.Settings.Default.Save();
         }
 
         protected override int GetIconOffsetX(bool highTemp) => highTemp ? 3 : 3;
