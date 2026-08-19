@@ -23,6 +23,9 @@ namespace StarTrayTemperature
 
         private void StartSensor(string type)
         {
+            // Already in the tray - starting again would overwrite the live NotifyIcon and Timer without disposing them
+            if (ActiveSensors.TryGetValue(type, out var running) && running.NotifyIcon != null) return;
+
             var state = GetState(type);
             LoadSettings_Sensor(type);
 
@@ -131,6 +134,8 @@ namespace StarTrayTemperature
 
             foreach (var state in ActiveSensors.Values)
             {
+                if (state.NotifyIcon == null) continue;
+
                 ContextMenu oldMenu = state.ContextMenu;
 
                 state.InitializeContextMenu(this);

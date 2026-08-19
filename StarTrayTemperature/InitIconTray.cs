@@ -73,9 +73,13 @@ namespace StarTrayTemperature
                 StartSensor("GPU");
             }
 
-            // Start CPU icon if both of the icons are somehow turned off
-            else if (!showCPU && !showGPU)
+            // Nothing reached the tray, fall back to the CPU icon so the app stays reachable
+            if (ActiveSensors.Count == 0)
             {
+                showCPU = true;
+                Properties.Settings.Default.ShowCPU = true;
+                Properties.Settings.Default.Save();
+
                 StartSensor("CPU");
             }
 
